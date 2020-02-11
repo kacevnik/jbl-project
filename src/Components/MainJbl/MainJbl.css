@@ -1,0 +1,10 @@
+.main-jbl {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.main-jbl-logo img {
+    width: 100%;
+}

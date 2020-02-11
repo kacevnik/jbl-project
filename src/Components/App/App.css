@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Gordita-Regular';
+    src: local('Gordita-Regular'), url(../../fonts/Gordita-Regular.ttf) format('truetype');
+}
+
+body {
+    font-family: 'Gordita-Regular';
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.jbl-container {
+    width: 1350px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

@@ -15,5 +15,9 @@ body {
 .jbl-container {
     width: 1350px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20px;
+}
+
+.pre-footer {
+    display: none;
 }

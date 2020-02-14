@@ -1,0 +1,64 @@
+.level-one-jbl {
+    display: none;
+    background-image: url(img/all.svg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.goal-area {
+    position: absolute;
+    width: 13.3%;
+    height: 38%;
+    opacity: 0.8;
+    left: 81.7%;
+    top: 26%;
+}
+
+.canvas-jbl.level-1 .level-one-jbl{
+    display: block;
+}
+
+.level-one-jbl #ball-1 {
+    top: 78%;
+    left: 2%;
+    position: 'absolute';
+}
+
+.level-one-jbl .dnd svg {
+    filter: drop-shadow(0 0 10px #34FFF3);
+    overflow: visible;
+}
+
+.level-one-jbl .dnd.dnd-goal svg {
+    filter: drop-shadow(0 0 10px #FF4713);
+    overflow: visible;
+}
+
+.level-one-jbl #ball-1.dnd {
+    cursor: move;
+}
+
+.level-one-jbl #ball-2 {
+    top: 81.7%;
+    left: 11.8%;
+}
+
+.level-one-jbl #ball-3 {
+    top: 58.7%;
+    left: 38.9%;
+}
+
+.level-one-jbl #ball-4 {
+    left: 72.5%;
+    top: 82.1%;
+}
+
+.level-one-jbl #ball-5 {
+    top: 63%;
+    left: 90%;
+}
+

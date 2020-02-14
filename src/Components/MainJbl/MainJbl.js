@@ -1,29 +1,27 @@
-import React from 'react';
-import logo from './img/logo.png';
+import React, {useEffect, useContext} from 'react';
+import {Context} from '../../context';
+import Parallax from 'parallax-js';
 import './MainJbl.css';
 
 function MainJbl() {
 
-    const AllWidth = 1350;
-    let styleMain = {
-        width: AllWidth/10.8870968 + 'px',
-    }
+    useEffect(() => {
+        new Parallax(document.getElementById('scene'));
+    });
+
+    const {changeLevel} = useContext(Context);
+
     return (
         <div className="main-jbl">
-            <div className="main-jbl-header">
-                <div className="main-jbl-logo" style={styleMain}>
-                    <img src={logo} alt="GBL"/>
-                    <h1>Игра</h1>
-                    <span>Сможешь ли ты устроить легендарную вечеринку?</span>
-                </div>
+            <div className="main-jbl-scene" id="scene">
+                <div className="main-jbl-first" data-depth="0"></div>
+                <div className="main-jbl-second" data-depth="0.1"></div>
             </div>
-            <div className="main-jbl-text">
-                <p><strong>Когда устраиваешь вечеринку, надо быть готовым к чему угодно.</strong></p>
-                <p>Закончились закуски, гости залипают в телефоны и отказываются танцевать или спорят о том, какой трек должен играть следующим… Как сделать так, чтобы все отлично провели время? Представь, что ты хозяин вечеринки и решать проблемы предстоит именно тебе. Вместе с <span className="red">JBL Pulse 4</span> мы предлагаем тебе проверить свои организаторские способности и устроить незабываемый праздник.</p>
-                <h5>Готов как следует оторваться?</h5>
+            <div className="main-jbl-wrap">
+                <button onClick={() => changeLevel('level-1')}>Начать веселье</button>
             </div>
-            <button>Начать веселье</button>
         </div>
+
     )
 }
 

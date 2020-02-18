@@ -8,7 +8,7 @@
     opacity: 0;
 }
 
-.room-messages.msg-1 {
+.room-messages.msg-1-enter.msg-1-enter-active {
     background-image: url(img/msg-1.svg);
     width: 20.5em;
     height: 4.2083em;
@@ -18,7 +18,7 @@
     animation-name: m-show;
 }
 
-.room-messages.msg-2 {
+.room-messages.msg-2-enter.msg-2-enter-active {
     background-image: url(img/msg-2.svg);
     width: 13.375em;
     height: 4.2083em;
@@ -28,7 +28,7 @@
     animation-name: m-show;
     opacity: 0;
 }
-.room-messages.msg-3 {
+.room-messages.msg-3-enter.msg-3-enter-active {
     background-image: url(img/msg-3.svg);
     width: 12.5em;
     height: 3.375em;
@@ -38,7 +38,7 @@
     animation-name: m-show;
     opacity: 0;
 }
-.room-messages.msg-4 {
+.room-messages.msg-4-enter.msg-4-enter-active {
     background-image: url(img/msg-4.svg);
     width: 17.75em;
     height: 4.2083em;
@@ -48,7 +48,7 @@
     animation-name: m-show;
     opacity: 0;
 }
-.room-messages.msg-5 {
+.room-messages.msg-5-enter.msg-5-enter-active {
     background-image: url(img/msg-5.svg);
     width: 14.875em;
     height: 4.2083em;
@@ -85,3 +85,5 @@
         transform: translateY(0) translateX(100%);
     }
 }
+
+

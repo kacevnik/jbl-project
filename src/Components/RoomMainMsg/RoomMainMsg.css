@@ -1,0 +1,50 @@
+.room-main-msg {
+    position: absolute;
+    top: 12.5%;
+    left: 1.5%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0;
+}
+
+.room-main-msg.room-1-msg {
+    width: 18.3333em;
+    height: 5.8333em;
+    background-image: url(img/room-1-main-msg.svg);
+}
+
+.room-main-msg.show{
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: s-hide;
+    opacity: 0;
+}
+
+@keyframes s-hide{
+    0%{
+        opacity: 0;
+        transform: translateY(0) translateX(-105%);
+    }
+    5%{
+        opacity: 1;
+        transform: translateY(0) translateX(20px);
+    }
+    6.25%{
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+    93.75% {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+    95%{
+        opacity: 1;
+        transform: translateY(0) translateX(20px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(0) translateX(-105%);
+    }
+}

@@ -1,12 +1,21 @@
 .level-one-jbl {
     display: none;
-    background-image: url(img/all.svg);
+    background-image: url(img/all.svg), url(img/all-tv-off.svg);
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;
     height: 100%;
     width: 100%;
+    overflow: hidden;
+}
+
+.level-one-jbl.tv-off {
+    background-image: url(img/all-tv-off.svg);
+}
+
+.level-one-jbl.room-finish {
+    background-image: url(img/all-finish.svg);
 }
 
 .goal-area {
@@ -16,6 +25,14 @@
     opacity: 0.8;
     left: 81.7%;
     top: 26%;
+}
+
+.goal-area-2 {
+    position: absolute;
+    width: 7%;
+    height: 19%;
+    left: 66%;
+    top: 2.7%;
 }
 
 .canvas-jbl.level-1 .level-one-jbl{
@@ -38,7 +55,12 @@
     overflow: visible;
 }
 
-.level-one-jbl #ball-1.dnd {
+.level-one-jbl #ball-1.dnd,
+.level-one-jbl #ball-2.dnd,
+.level-one-jbl #ball-3.dnd,
+.level-one-jbl #ball-4.dnd,
+.level-one-jbl #ball-5.dnd,
+.level-one-jbl #vaza.dnd {
     cursor: move;
 }
 
@@ -60,5 +82,34 @@
 .level-one-jbl #ball-5 {
     top: 63%;
     left: 90%;
+}
+
+.room1-counter {
+    top: 7.2%;
+    position: absolute;
+    left: 3.5%;
+    font-size: 1.1em;
+}
+
+.room-1-panel {
+    position: absolute;
+    width: 21%;
+    height: 9.8%;
+    top: 2.7%;
+    left: 14.8%;
+}
+
+.room-1-panel-elem {
+    width: 20%;
+    height: 100%;
+    background-image: url(img/jbl.svg);
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-size: 56%;
+    float: left;
+}
+
+.room-1-panel-elem.show {
+    background-image: url(img/jbl-on.svg);
 }
 

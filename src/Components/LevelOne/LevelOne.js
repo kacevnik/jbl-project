@@ -3,6 +3,35 @@ import './LevelOne.css';
 import DragELem from './DragElem'
 import DragELem2 from './DragElem2'
 import DragELem3 from './DragElem3'
+import DragELem4 from './DragElem4'
+import DragELem5 from './DragElem5'
+import DragELem6 from './DragElem6'
+import DragELem7 from './DragElem7'
+import BtnLight from './BtnLight'
+import Column from './Column'
+import RoomMainMsg from '../RoomMainMsg'
+import ColumnOn from './ColumnOn'
+import BtnShowRules from '../BtnShowRules'
+import RoomMessages from '../RoomMessages'
+
+function RoomPanel({roomCount}){
+    const arrElem = [false, false, false, false, false]
+    const resArrEll = arrElem.map((el, idx) => {
+        let cls = ['room-1-panel-elem']
+        if(idx + 1 <= roomCount ){
+            cls.push('show')
+        }
+        return (
+            <div key={idx} className={cls.join(' ')}></div>
+        )
+    })
+    return(
+
+        <div className="room-1-panel">
+            {resArrEll}
+        </div>
+    )
+}
 
 function GollArea(){
     return(
@@ -11,51 +40,57 @@ function GollArea(){
     )
 }
 
-function LevelOne() {
+function GollArea2(){
+    return(
+
+        <div className="goal-area-2"></div>
+    )
+}
+
+function LevelOne({roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMainMsg, messages}) {
+
+    let btn = <DragELem7 name="btn-on-off" />
+    let light = <BtnLight name="btn-off-ligth"/>
+    let column = <Column name="column-level-1"/>
+    let cls = ['level-one-jbl']
+
+    if(!displayBtnTVOff){
+        btn = ''
+        cls.push('tv-off')
+    }
+
+    if(room1Finish){
+        btn = ''
+        light = ''
+        cls.push('room-finish')
+    }
+    
+    if (columnOn){
+        if (room1Finish) {
+            column = ''
+        } else {
+            column  = <ColumnOn name="column-level-1"/>
+        }
+    }
 
     return (
-        <div className="level-one-jbl">
-            <GollArea/>
-            <DragELem name="ball-1" />
-            <DragELem2 name="ball-1" />
-            <DragELem3 name="ball-1" />
-            {/* <svg ref={drag} width="5.04166667em" height="4.45833333em" viewBox="0 0 121 107" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-1">
-                <path d="M21.8025 84.6404L19.5068 81.0585L11.4176 84.365L12.2473 85.7511L12.7531 86.3791L14.3495 88.7566L15.5547 90.5891L21.8025 84.6404Z" fill="#4A4AD1" stroke="black" stroke-miterlimit="10"/>
-                <path d="M107.275 26.1761C94.0656 5.70615 65.4579 0.525206 43.2849 14.6615C21.1118 28.7979 3.4391 63.4685 16.565 84.0528C29.6909 104.637 68.7819 103.098 90.856 88.9777C113.128 74.8257 120.385 46.6617 107.275 26.1761Z" fill="#4A4AD1" stroke="black" stroke-miterlimit="10"/>
-                <path d="M44.0841 25.9847C45.9743 26.3935 47.1955 28.3247 46.7874 30.2104C46.3793 32.0962 44.4449 33.3132 42.5547 32.9045C40.6645 32.4957 39.4433 30.5645 39.8514 28.6787C40.2595 26.793 42.1939 25.576 44.0841 25.9847Z" fill="#4A6AD1" stroke="black" stroke-miterlimit="10"/>
-                <path d="M81.8046 19.5995C81.2049 15.8487 73.7068 12.0777 65.3009 13.4095C56.8949 14.7414 50.9593 20.7421 51.559 24.4929C52.1587 28.2437 59.0728 28.3627 67.4787 27.0308C75.8689 25.6002 82.4043 23.3503 81.8046 19.5995Z" fill="#4A6AD1" stroke="black" stroke-miterlimit="10"/>
-            </svg>
-
-            <svg width="4.91em" height="4.91em" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-2">
-                <path d="M25.9542 109.094L27.8867 110.132L30.3346 111.549L30.9726 112.001L32.3189 112.78L34.9869 104.6L31.3408 102.57L25.9542 109.094Z" fill="#FFA6D7" stroke="black" stroke-miterlimit="10"/>
-                <path d="M22.4037 34.8709C10.0786 57.5632 11.3095 96.1167 32.444 107.459C53.5079 118.923 86.3596 99.1298 98.6847 76.4374C111.01 53.7451 103.982 25.9731 82.8922 14.4118C61.8283 2.94717 34.703 12.0818 22.4037 34.8709Z" fill="#FFA6D7" stroke="black" stroke-miterlimit="10"/>
-                <path d="M85.0701 80.8113C83.263 81.3992 81.3306 80.3616 80.7157 78.4526C80.1267 76.6403 81.1331 74.608 83.0626 74.0909C84.8697 73.503 86.8022 74.5406 87.4171 76.4496C88.0061 78.2619 86.9737 80.1975 85.0701 80.8113Z" fill="#FFDDF0" stroke="black" stroke-miterlimit="10"/>
-                <path d="M84.8836 53.4875C84.1077 61.7831 84.6868 68.5751 88.4969 68.9022C92.2105 69.255 97.649 62.9244 98.4248 54.6288C99.2007 46.3332 94.8115 39.2141 91.2203 38.9321C87.4102 38.6051 85.6594 45.1919 84.8836 53.4875Z" fill="#FFDDF0" stroke="black" stroke-miterlimit="10"/>
-            </svg>
-
-            <svg width="5.66em" height="4.625em" viewBox="0 0 136 111" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-3">
-                <path d="M47.2661 105.277L45.5326 103.822L43.2662 102.013L42.6249 101.567L41.4332 100.567L48.244 94.8339L51.5939 97.553L47.2661 105.277Z" fill="#FF4713" stroke="black" stroke-miterlimit="10"/>
-                <path d="M119.511 79.8593C102.599 100.566 65.4076 114.225 46.3566 98.4203C27.2149 82.7247 33.3556 43.4678 50.2769 22.861C67.1892 2.15439 96.414 -1.84803 115.556 13.8476C134.706 29.643 136.424 59.1527 119.511 79.8593Z" fill="#FF4713" stroke="black" stroke-miterlimit="10"/>
-                <path d="M45.6031 97.9457C42.154 94.9054 33.7153 89.5642 27.5526 92.5207C19.8493 96.2165 15.7796 95.6095 15.467 92.0879C15.069 87.6056 9.55798 82.0713 6.65817 83.3327" stroke="black"/>
-                <path d="M51.2803 37.5527C51.4574 39.5479 53.191 41.0028 55.1807 40.8262C57.1705 40.6495 58.6205 38.912 58.4434 36.9167C58.2662 34.9214 56.5327 33.4665 54.543 33.6432C52.6527 33.811 51.1031 35.5574 51.2803 37.5527Z" fill="#FF6539" stroke="black" stroke-miterlimit="10"/>
-                <path d="M77.4245 27.0869C69.7489 30.986 63.1166 33.0831 61.3055 29.6241C59.6026 26.2561 63.433 18.5758 71.0997 14.577C78.7753 10.6779 87.2187 12.0398 88.9215 15.4079C90.6421 18.9755 85.1 23.1879 77.4245 27.0869Z" fill="#FF6539" stroke="black" stroke-miterlimit="10"/>
-            </svg>
-
-            <svg width="6.375em" height="5.583em" viewBox="0 0 153 134" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-4">
-                <path d="M38.3204 105.158L37.2778 103.15L35.8792 100.609L35.4581 99.951L34.7413 98.5701L43.2305 95.8894L45.2806 99.6856L38.3204 105.158Z" fill="#FFF480" stroke="black" stroke-miterlimit="10"/>
-                <path d="M114.789 109.405C91.2261 122.038 51.6405 120.381 40.1115 98.477C28.4571 76.6383 49.1901 42.7421 72.7228 30.2049C96.2855 17.5721 124.809 25.0892 136.464 46.9279C148.088 68.8621 138.352 96.7722 114.789 109.405Z" fill="#FFF480" stroke="black" stroke-miterlimit="10"/>
-                <path d="M39.5979 97.7496C37.5793 93.6187 31.8358 85.4484 25.0104 85.8142C16.4786 86.2714 12.9533 84.1494 14.0158 80.7773C15.3681 76.4854 12.4023 69.2602 9.24043 69.3124" stroke="black"/>
-                <path d="M68.0124 44.1573C67.4104 46.0678 68.4531 48.0765 70.3583 48.6768C72.2636 49.2771 74.2693 48.2289 74.8713 46.3184C75.4733 44.4078 74.4307 42.3992 72.5254 41.7989C70.7154 41.2286 68.6144 42.2467 68.0124 44.1573Z" fill="#FFF9B8" stroke="black" stroke-miterlimit="10"/>
-                <path d="M96.1712 44.5236C87.587 45.1792 80.6577 44.5711 80.3123 40.6819C80.0321 36.9183 86.5161 31.2955 95.1303 30.5444C103.714 29.8887 110.989 34.386 111.269 38.1496C111.489 42.1043 104.755 43.8679 96.1712 44.5236Z" fill="#FFF9B8" stroke="black" stroke-miterlimit="10"/>
-            </svg>
-
-            <svg width="5.625em" height="6.625em" viewBox="0 0 135 159" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-5">
-                <path d="M25.6193 102.282L27.1433 103.863L29.1133 105.945L29.6152 106.577L30.7861 107.693L35.8079 100.561L32.8156 97.5298L25.6193 102.282Z" fill="#6AD1CB" stroke="black" stroke-miterlimit="10"/>
-                <path d="M33.5894 104C35.256 104.5 30.0894 120 41.0894 120C54.9187 120 42.0894 133 53.0894 138" stroke="black"/>
-                <path d="M43.9907 29.3679C25.2637 47.7878 15.1387 85.3747 32.3491 102.724C49.4293 120.128 87.3586 110.601 106.086 92.181C124.813 73.7611 126.086 44.7822 109.005 27.3778C91.8879 10.0661 62.755 10.8552 43.9907 29.3679Z" fill="#4AE6D1" stroke="black" stroke-miterlimit="10"/>
-                <path d="M91.6401 92.4089C89.7066 92.3861 88.0525 90.861 88.1089 88.8387C88.1281 86.9091 89.746 85.2985 91.6795 85.3214C93.613 85.3442 95.2671 86.8693 95.2107 88.8915C95.1915 90.8211 93.5736 92.4317 91.6401 92.4089Z" fill="#77FFF7" stroke="black" stroke-miterlimit="10"/>
-                <path d="M99.4565 65.9494C96.2936 73.8279 94.7857 80.5411 98.4105 81.9964C101.942 83.4143 109.12 78.9772 112.283 71.0986C115.446 63.2201 113.329 55.0517 109.89 53.6711C106.265 52.2158 102.619 58.0709 99.4565 65.9494Z" fill="#77FFF7" stroke="black" stroke-miterlimit="10"/>
-            </svg> */}
+        <div className={cls.join(' ')}>
+            <RoomPanel roomCount={roomCount}/>
+            <div className="room1-counter">{roomCount}/5</div>
+            <RoomMainMsg show={showRoomMainMsg} room={'room-1-msg'}/>
+            {room1Finish ? ('') : (<GollArea />)}
+            {room1Finish ? ('') : (<GollArea2 />)}
+            {room1Finish ? ('') : (<DragELem name="ball-1" />)}
+            {room1Finish ? ('') : (<DragELem2 name="ball-2" />)}
+            {room1Finish ? ('') : (<DragELem3 name="ball-3" />)}
+            {room1Finish ? ('') : (<DragELem4 name="ball-4" />)}
+            {room1Finish ? ('') : (<DragELem5 name="ball-5" />)}
+            {room1Finish ? ('') : (<DragELem6 name="vaza" /> )}
+            {btn}
+            {light}
+            {column}
+            <BtnShowRules />
+            <RoomMessages msgState={messages}/>
         </div>
     )
 }

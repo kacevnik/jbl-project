@@ -1,0 +1,13 @@
+.btn-show-rules {
+    width: 4.7%;
+    height: 7.5%;
+    top: 3.9%;
+    left: 87.35%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    background: #000000;
+}
+.btn-show-rules:hover {
+    opacity: 0.3;
+}

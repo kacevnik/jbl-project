@@ -2,4 +2,48 @@
     display: flex;
     justify-content: center;
     background-color: #4A4AD1;
+    background-image: url(img/bg-2.png);
+    background-repeat: repeat-y;
+    background-position: center top;
+    user-select: none;
+    position: relative;
+}
+
+.main-message {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.69);
+    align-items: center;
+    justify-content: center;
+    z-index: 1020;
+}
+
+.main-message span {
+    background: url(img/main-message.svg) no-repeat center center;
+    background-size: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.main-message button {
+    height: 6.5%;
+    width: 3.3%;
+    position: absolute;
+    right: 0.2%;
+    top: 0.6%;
+    border: none;
+    opacity: 0;
+}
+.main-message button:active, .main-message button:focus, .main-message button:hover {
+    background: #000000;
+    opacity: 0.3;
+}
+
+.main-message.show {
+    display: flex;
 }

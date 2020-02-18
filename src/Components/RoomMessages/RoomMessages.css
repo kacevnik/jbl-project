@@ -1,0 +1,87 @@
+.room-messages {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0;
+}
+
+.room-messages.msg-1 {
+    background-image: url(img/msg-1.svg);
+    width: 20.5em;
+    height: 4.2083em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+}
+
+.room-messages.msg-2 {
+    background-image: url(img/msg-2.svg);
+    width: 13.375em;
+    height: 4.2083em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+.room-messages.msg-3 {
+    background-image: url(img/msg-3.svg);
+    width: 12.5em;
+    height: 3.375em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+.room-messages.msg-4 {
+    background-image: url(img/msg-4.svg);
+    width: 17.75em;
+    height: 4.2083em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+.room-messages.msg-5 {
+    background-image: url(img/msg-5.svg);
+    width: 14.875em;
+    height: 4.2083em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+
+@keyframes m-show{
+    0%{
+        opacity: 0;
+        transform: translateY(0) translateX(100%);
+    }
+    5%{
+        opacity: 1;
+        transform: translateY(0) translateX(20px);
+    }
+    6.25%{
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+    93.75% {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+    95%{
+        opacity: 1;
+        transform: translateY(0) translateX(20px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(0) translateX(100%);
+    }
+}

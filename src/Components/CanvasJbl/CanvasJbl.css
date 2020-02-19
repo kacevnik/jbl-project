@@ -39,7 +39,7 @@
     border: none;
     opacity: 0;
 }
-.main-message button:active, .main-message button:focus, .main-message button:hover {
+.main-message button:hover {
     background: #000000;
     opacity: 0.3;
 }

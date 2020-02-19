@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Context} from '../../context';
+import { DropTarget } from 'react-drag-drop-container';
 import './LevelOne.css';
 import DragELem from './DragElem'
+import DragElemClone1 from './DragElemClone1'
 import DragELem2 from './DragElem2'
+import DragElemClone2 from './DragElemClone2'
 import DragELem3 from './DragElem3'
+import DragElemClone3 from './DragElemClone3'
 import DragELem4 from './DragElem4'
+import DragElemClone4 from './DragElemClone4'
 import DragELem5 from './DragElem5'
+import DragElemClone5 from './DragElemClone5'
 import DragELem6 from './DragElem6'
+import DragElemClone6 from './DragElemClone6'
 import DragELem7 from './DragElem7'
 import BtnLight from './BtnLight'
 import Column from './Column'
 import RoomMainMsg from '../RoomMainMsg'
 import ColumnOn from './ColumnOn'
 import BtnShowRules from '../BtnShowRules'
+import BtnShowHint from '../BtnShowHint'
 import RoomMessages from '../RoomMessages'
 
 function RoomPanel({roomCount}){
@@ -34,16 +43,65 @@ function RoomPanel({roomCount}){
 }
 
 function GollArea(){
-    return(
 
-        <div className="goal-area"></div>
+    const {counterBalls } = useContext(Context);
+
+    const dropped = (e) => {
+        console.log(e)
+        const parent = e.containerElem.parentNode;
+
+        parent.style.display = 'none'
+        document.getElementById(e.dragData.name + '-clone').style.display = 'block'
+        parent.classList.remove('dnd')
+        counterBalls()
+    }
+
+    const dragenter = (e) => {
+        e.containerElem.parentNode.classList.add('dnd-goal');
+    }
+
+    const dragleave = (e) => {
+        e.containerElem.parentNode.classList.remove('dnd-goal');
+    }
+
+    return(
+        <div className="goal-area">
+            <DropTarget targetKey="balls" onHit={(e)=>dropped(e) } onDragEnter={(e)=>dragenter(e)} onDragLeave={(e)=>dragleave(e)}>
+                <div style={{width: '100%', height: '100%'}}></div>
+            </DropTarget>
+        </div>
     )
 }
 
 function GollArea2(){
+
+    const { chengeRoom1Count } = useContext(Context);
+
+    const dropped = (e) => {
+        console.log(e)
+        const parent = e.containerElem.parentNode;
+
+        parent.style.display = 'none'
+        document.getElementById(e.dragData.name + '-clone').style.display = 'block'
+        parent.classList.remove('dnd')
+        chengeRoom1Count('msg-1')
+    }
+
+    const dragenter = (e) => {
+        e.containerElem.parentNode.classList.add('dnd-goal');
+    }
+
+    const dragleave = (e) => {
+        e.containerElem.parentNode.classList.remove('dnd-goal');
+    }
+
     return(
 
-        <div className="goal-area-2"></div>
+        <div className="goal-area-2">
+            <DropTarget targetKey="vaza" onHit={(e)=>dropped(e) } onDragEnter={(e)=>dragenter(e)} onDragLeave={(e)=>dragleave(e)}>
+                <div style={{width: '100%', height: '100%'}}></div>
+            </DropTarget>
+        </div>
     )
 }
 
@@ -90,7 +148,14 @@ function LevelOne({roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMa
             {light}
             {column}
             <BtnShowRules />
+            <BtnShowHint />
             <RoomMessages msgState={messages}/>
+            {room1Finish ? ('') : (<DragElemClone1 />)}
+            {room1Finish ? ('') : (<DragElemClone2 />)}
+            {room1Finish ? ('') : (<DragElemClone3 />)}
+            {room1Finish ? ('') : (<DragElemClone4 />)}
+            {room1Finish ? ('') : (<DragElemClone5 />)}
+            {room1Finish ? ('') : (<DragElemClone6 />)}
         </div>
     )
 }

@@ -25,6 +25,7 @@
     opacity: 0.8;
     left: 81.7%;
     top: 26%;
+    z-index: 1000;
 }
 
 .goal-area-2 {
@@ -37,12 +38,6 @@
 
 .canvas-jbl.level-1 .level-one-jbl{
     display: block;
-}
-
-.level-one-jbl #ball-1 {
-    top: 78%;
-    left: 2%;
-    position: 'absolute';
 }
 
 .level-one-jbl .dnd svg {
@@ -64,9 +59,35 @@
     cursor: move;
 }
 
+.level-one-jbl #ball-1 {
+    top: 78%;
+    left: 2%;
+}
+
+#ball-1-clone {
+    display: none;
+    top: 33%;
+    left: 81%;
+    transform: rotate(285deg);
+    z-index: 995;
+    width: 5.04166667em;
+    height: 4.45833333em;
+    position: absolute;
+}
+
 .level-one-jbl #ball-2 {
     top: 81.7%;
     left: 11.8%;
+}
+
+#ball-2-clone {
+    display: none;
+    top: 37%;
+    left: 87%;
+    z-index: 994;
+    width: 4.91em;
+    height: 5.66em;
+    position: absolute;
 }
 
 .level-one-jbl #ball-3 {
@@ -74,14 +95,55 @@
     left: 38.9%;
 }
 
+#ball-3-clone {
+    display: none;
+    top: 43%;
+    left: 80.5%;
+    z-index: 996;
+    width: 5.66em;
+    height: 4.625em;
+    position: absolute;
+    transform: rotate(289deg);
+}
+
 .level-one-jbl #ball-4 {
     left: 72.5%;
     top: 82.1%;
 }
 
+#ball-4-clone {
+    display: none;
+    top: 25%;
+    left: 83%;
+    z-index: 999;
+    width: 6.375em;
+    height: 5.583em;
+    position: absolute;
+}
+
 .level-one-jbl #ball-5 {
     top: 63%;
     left: 90%;
+}
+
+#ball-5-clone {
+    display: none;
+    top: 47%;
+    left: 85%;
+    z-index: 998;
+    width: 5.625em;
+    height: 6.625em;
+    position: absolute;
+}
+
+#vaza-clone {
+    display: none;
+    top: 3%;
+    left: 67.2%;
+    z-index: 998;
+    width: 2.833em;
+    height: 6.458em;
+    position: absolute;
 }
 
 .room1-counter {

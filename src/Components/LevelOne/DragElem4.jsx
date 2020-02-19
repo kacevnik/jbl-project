@@ -1,96 +1,66 @@
-import React, { useState, useContext } from 'react'
-import {Context} from '../../context';
+import React, { useEffect } from 'react'
+import { DragDropContainer } from 'react-drag-drop-container';
 
-const DragElem1 = () => {
+const DragElem4 = () => {
 
-  const {counterBalls } = useContext(Context);
+  const nameElem = 'ball-4';
 
-  const [dragTop, setDragTop] = useState('80.5%');
-  const [dragLeft, setDragLeft] = useState('82.1%');
+  useEffect(() => {
+    document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
+  })
 
   const styles = {
-    top: dragTop,
-    left: dragLeft,
+    top: '80.5%',
+    left: '82.1%',
     width: '6.375em',
     height: '5.583em',
     position: 'absolute',
   }
 
-  const mouseDownHendler = (e) => {
-    var ball = document.getElementById('ball-4');
-      let top = dragTop;
-      let left = dragLeft;
-      let x = e.pageX - ball.getBoundingClientRect().left;
-      let y = e.pageY - ball.getBoundingClientRect().top;
+  const landedOn = (e) => {
+    document.getElementById(e.name).classList.add('dnd')
+    let areaLeft = document.querySelector('.level-one-jbl').getBoundingClientRect().left;
+    let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
+    let areaWidth = document.querySelector('.level-one-jbl').offsetWidth
+    let elemWidth = document.querySelector('#' +e.name+ ' .ddcontainerghost > div').offsetWidth
+    let areaTop = document.querySelector('.level-one-jbl').getBoundingClientRect().top;
+    let elemTop = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.top)
+    let areaHeight = document.querySelector('.level-one-jbl').offsetHeight
+    let elemHeight = document.querySelector('#' +e.name+ ' .ddcontainerghost > div').offsetHeight
+    
 
-      ball.classList.add('dnd');
+    if(elemLeft <= areaLeft){
+      document.querySelector('#' + e.name + ' .ddcontainerghost').style.left = areaLeft
+    }
 
-      moveAt(e);
+    if (elemLeft + elemWidth >= areaLeft + areaWidth) {
+      document.querySelector('#' + e.name + ' .ddcontainerghost').style.left = areaLeft + areaWidth - elemWidth
+    }
 
-      ball.style.zIndex = 999;
+    if (elemTop <= areaTop) {
+      document.querySelector('#' + e.name + ' .ddcontainerghost').style.top = areaTop
+    }
 
-      function moveAt(e) {
-        let area = document.querySelector('.level-one-jbl');
-        let goal = document.querySelector('.goal-area');
-          let xx = e.pageX - area.getBoundingClientRect().left - x;
-          let yy = e.pageY - area.getBoundingClientRect().top - y;
-
-          if ( e.pageX >= goal.getBoundingClientRect().left && e.pageX <= goal.getBoundingClientRect().left + goal.offsetWidth && e.pageY >= goal.getBoundingClientRect().top && e.pageY <= goal.getBoundingClientRect().top + goal.offsetHeight ) {
-            ball.classList.add('dnd-goal');
-            ball.onmouseup = function() {
-              ball.classList.remove('dnd-goal');
-              ball.classList.remove('dnd');
-              left = '83%'
-              top = '25%'
-              ball.style.zIndex = 999;
-              counterBalls()
-            }
-          } else {
-            ball.onmouseup = null
-            ball.classList.remove('dnd-goal');
-          }
-
-          if ( xx <= 0 ) {
-            setDragLeft( 0 )
-          } else if ( e.pageX + ball.offsetWidth - x >= area.offsetWidth + area.getBoundingClientRect().left ) {
-            setDragLeft( area.offsetWidth - ball.offsetWidth )
-          } else {
-            setDragLeft( xx )
-          }
-          
-          if ( yy <= 0 ) {
-            setDragTop( 0 )
-          } else if ( e.pageY + ball.offsetHeight - y >= area.offsetHeight + area.getBoundingClientRect().top ) {
-            setDragTop( area.offsetHeight - ball.offsetHeight )
-          } else {
-            setDragTop( yy )
-          }
-
-      }
-
-      document.onmousemove = function(e) {
-        moveAt(e);
-      }
-
-      document.onmouseup = function(){
-        document.onmousemove = null;
-        ball.onmouseup = null;
-        setDragLeft(left);
-        setDragTop(top);
-        ball.classList.remove('dnd');
-      }
-
-      ball.onmouseup = function() {
-          document.onmousemove = null;
-          ball.onmouseup = null;
-          setDragLeft(left);
-          setDragTop(top);
-          ball.classList.remove('dnd');
-      }
+    if(elemTop + elemHeight >= areaTop + areaHeight) {
+      document.querySelector('#' + e.name + ' .ddcontainerghost').style.top = areaTop + areaHeight - elemHeight
+    }
   }
+
+  const landedEnd = (e) => {
+    document.getElementById(e.name).classList.remove('dnd')
+  }
+
   return (
-    <div style={styles} id='ball-4' onMouseDown={(e) => mouseDownHendler(e)}>
-        <svg viewBox="0 0 153 134" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-4">
+    <span style={styles} id={nameElem}>
+      <DragDropContainer
+        targetKey="balls"
+        dragData={{name: nameElem }}
+        onDrag={(e) => landedOn(e)}
+        onDragEnd={(e) => landedEnd(e)}
+      >
+        
+    <div style={styles}>
+    <svg viewBox="0 0 153 134" fill="none" xmlns="http://www.w3.org/2000/svg" id="ball-4">
             <path d="M38.3204 105.158L37.2778 103.15L35.8792 100.609L35.4581 99.951L34.7413 98.5701L43.2305 95.8894L45.2806 99.6856L38.3204 105.158Z" fill="#FFF480" stroke="black" strokeMiterlimit="10"/>
             <path d="M114.789 109.405C91.2261 122.038 51.6405 120.381 40.1115 98.477C28.4571 76.6383 49.1901 42.7421 72.7228 30.2049C96.2855 17.5721 124.809 25.0892 136.464 46.9279C148.088 68.8621 138.352 96.7722 114.789 109.405Z" fill="#FFF480" stroke="black" strokeMiterlimit="10"/>
             <path d="M39.5979 97.7496C37.5793 93.6187 31.8358 85.4484 25.0104 85.8142C16.4786 86.2714 12.9533 84.1494 14.0158 80.7773C15.3681 76.4854 12.4023 69.2602 9.24043 69.3124" stroke="black"/>
@@ -98,7 +68,9 @@ const DragElem1 = () => {
             <path d="M96.1712 44.5236C87.587 45.1792 80.6577 44.5711 80.3123 40.6819C80.0321 36.9183 86.5161 31.2955 95.1303 30.5444C103.714 29.8887 110.989 34.386 111.269 38.1496C111.489 42.1043 104.755 43.8679 96.1712 44.5236Z" fill="#FFF9B8" stroke="black" strokeMiterlimit="10"/>
         </svg>
     </div>
-
+</DragDropContainer>
+    </span>
   )
 }
-export default DragElem1
+
+export default DragElem4

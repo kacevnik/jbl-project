@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import ReactAddonsCSSTransitionGroup from 'react-addons-css-transition-group'
 import './RoomMessages.css'
-import { Context } from '../../context';
 
 function RoomMessages({ msgState }) {
-
-    const { chengeStateMessage } = useContext(Context);
 
     let clx = msgState ? msgState : 'msg'
     let elem = null

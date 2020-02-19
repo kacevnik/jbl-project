@@ -1,13 +1,9 @@
-.btn-show-rules {
+.btn-show-hint {
     width: 4.7%;
     height: 7.5%;
     top: 3.9%;
-    left: 87.3%;
+    left: 75.8%;
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    background: #000000;
-}
-.btn-show-rules:hover {
-    opacity: 0.3;
 }

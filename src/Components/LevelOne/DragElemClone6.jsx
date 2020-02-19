@@ -1,66 +1,9 @@
-import React, { useEffect } from 'react'
-import { DragDropContainer } from 'react-drag-drop-container';
+import React from 'react'
 
-const DragElem6 = () => {
-
-  const nameElem = 'vaza';
-
-  useEffect(() => {
-    document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
-  })
-
-  const styles = {
-    top: '60.5%',
-    left: '86.6%',
-    width: '2.833em',
-    height: '6.458em',
-    position: 'absolute',
-  }
-
-  const landedOn = (e) => {
-    document.getElementById(e.name).classList.add('dnd')
-    let areaLeft = document.querySelector('.level-one-jbl').getBoundingClientRect().left;
-    let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
-    let areaWidth = document.querySelector('.level-one-jbl').offsetWidth
-    let elemWidth = document.querySelector('#' +e.name+ ' .ddcontainerghost > div').offsetWidth
-    let areaTop = document.querySelector('.level-one-jbl').getBoundingClientRect().top;
-    let elemTop = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.top)
-    let areaHeight = document.querySelector('.level-one-jbl').offsetHeight
-    let elemHeight = document.querySelector('#' +e.name+ ' .ddcontainerghost > div').offsetHeight
-    
-
-    if(elemLeft <= areaLeft){
-      document.querySelector('#' + e.name + ' .ddcontainerghost').style.left = areaLeft
-    }
-
-    if (elemLeft + elemWidth >= areaLeft + areaWidth) {
-      document.querySelector('#' + e.name + ' .ddcontainerghost').style.left = areaLeft + areaWidth - elemWidth
-    }
-
-    if (elemTop <= areaTop) {
-      document.querySelector('#' + e.name + ' .ddcontainerghost').style.top = areaTop
-    }
-
-    if(elemTop + elemHeight >= areaTop + areaHeight) {
-      document.querySelector('#' + e.name + ' .ddcontainerghost').style.top = areaTop + areaHeight - elemHeight
-    }
-  }
-
-  const landedEnd = (e) => {
-    document.getElementById(e.name).classList.remove('dnd')
-  }
-
-  return (
-    <span style={styles} id={nameElem}>
-      <DragDropContainer
-        targetKey="vaza"
-        dragData={{name: nameElem }}
-        onDrag={(e) => landedOn(e)}
-        onDragEnd={(e) => landedEnd(e)}
-      >
-        
-    <div style={styles}>
-    <svg viewBox="0 0 68 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+const DragElemClone6 = () => {
+    return(
+        <div id="vaza-clone">
+      <svg viewBox="0 0 68 155" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M41.4964 36.968L55.4372 8.94981C55.877 6.60382 54.3375 4.34473 52.3581 4.34473H15.3366C13.2839 4.34473 11.7444 6.51693 12.2576 8.94981L26.1983 36.968C19.6737 44.1798 0.894531 38.6609 0.894531 50.0433C0.894531 69.3326 14.8563 140.626 30.1048 152.617C32.0842 154.181 33.884 154.094 33.884 154.094C33.884 154.094 35.6106 154.181 37.59 152.617C52.8384 140.713 66.8002 69.4194 66.8002 50.0433C66.8002 38.574 47.9477 44.1798 41.4964 36.968Z" fill="#FF4713" stroke="black" strokeMiterlimit="10" />
         <path d="M22.4478 141.929L24.738 140.191L27.0282 141.929L29.3771 140.191L31.6673 141.929L33.9575 140.191L36.2477 141.929L38.5379 140.191L40.8868 141.929L43.177 140.191L45.4672 141.929" stroke="black" strokeMiterlimit="10" />
         <path d="M12.0095 111.605L14.2361 113.343L16.399 111.605L18.6256 113.343L20.7886 111.605L23.0152 113.343L25.1782 111.605L27.3411 113.343L29.5677 111.605L31.7307 113.343L33.9572 111.605L36.1202 113.343L38.3468 111.605L40.5097 113.343L42.7363 111.605L44.8993 113.343L47.1259 111.605L49.3524 113.343L51.5154 111.605L53.742 113.343L55.9049 111.605" stroke="black" strokeMiterlimit="10" />
@@ -79,10 +22,8 @@ const DragElem6 = () => {
         <path d="M33.591 8.00778C46.5066 8.00778 56.9768 6.49249 56.9768 4.62328C56.9768 2.75406 46.5066 1.23877 33.591 1.23877C20.6753 1.23877 10.2051 2.75406 10.2051 4.62328C10.2051 6.49249 20.6753 8.00778 33.591 8.00778Z" fill="#FF4545" stroke="black" strokeMiterlimit="10" />
         <path d="M54.4652 33.762L54.4927 33.6203L54.5202 33.762C55.181 37.1643 57.8414 39.8247 61.2437 40.4855L61.3854 40.513L61.2437 40.5405C57.8414 41.2013 55.181 43.8617 54.5202 47.264L54.4927 47.4057L54.4652 47.264C53.8044 43.8617 51.144 41.2013 47.7417 40.5405L47.6 40.513L47.7417 40.4855C51.144 39.8247 53.8044 37.1643 54.4652 33.762Z" fill="white" stroke="black" />
       </svg>
-    </div>
-</DragDropContainer>
-    </span>
-  )
+      </div>
+    )
 }
 
-export default DragElem6
+export default DragElemClone6

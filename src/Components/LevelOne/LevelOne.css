@@ -12,10 +12,12 @@
 
 .level-one-jbl.tv-off {
     background-image: url(img/all-tv-off.svg);
+    display: none;
 }
 
 .level-one-jbl.room-finish {
     background-image: url(img/all-finish.svg);
+    display: none;
 }
 
 .goal-area {
@@ -36,17 +38,17 @@
     top: 2.7%;
 }
 
-.canvas-jbl.level-1 .level-one-jbl{
+.canvas-jbl.level-1 .level-one-jbl, .canvas-jbl.level-1 .level-one-jbl.room-finish, .canvas-jbl.level-1 .level-one-jbl.tv-off{
     display: block;
 }
 
-.level-one-jbl .dnd svg {
+.dnd svg {
     filter: drop-shadow(0 0 10px #34FFF3);
     overflow: visible;
 }
 
-.level-one-jbl .dnd.dnd-goal svg {
-    filter: drop-shadow(0 0 10px #FF4713);
+.dnd.dnd-goal svg {
+    filter: drop-shadow(0 0 7px #FFED2C);
     overflow: visible;
 }
 
@@ -55,7 +57,8 @@
 .level-one-jbl #ball-3.dnd,
 .level-one-jbl #ball-4.dnd,
 .level-one-jbl #ball-5.dnd,
-.level-one-jbl #vaza.dnd {
+.level-one-jbl #vaza.dnd,
+.level-two-jbl #mop.dnd {
     cursor: move;
 }
 
@@ -159,6 +162,14 @@
     height: 9.8%;
     top: 2.7%;
     left: 14.8%;
+}
+
+.level-two-jbl .room-1-panel {
+    position: absolute;
+    width: 21%;
+    height: 9.8%;
+    top: 1.7%;
+    left: 11.8%;
 }
 
 .room-1-panel-elem {

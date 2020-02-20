@@ -21,6 +21,7 @@ import RoomMainMsg from '../RoomMainMsg'
 import ColumnOn from './ColumnOn'
 import BtnShowRules from '../BtnShowRules'
 import BtnShowHint from '../BtnShowHint'
+import BtnNextLevel from '../BtnNextLevel'
 import RoomMessages from '../RoomMessages'
 
 function RoomPanel({roomCount}){
@@ -47,7 +48,7 @@ function GollArea(){
     const {counterBalls } = useContext(Context);
 
     const dropped = (e) => {
-        console.log(e)
+
         const parent = e.containerElem.parentNode;
 
         parent.style.display = 'none'
@@ -149,6 +150,7 @@ function LevelOne({roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMa
             {column}
             <BtnShowRules />
             <BtnShowHint />
+            <BtnNextLevel />
             <RoomMessages msgState={messages}/>
             {room1Finish ? ('') : (<DragElemClone1 />)}
             {room1Finish ? ('') : (<DragElemClone2 />)}

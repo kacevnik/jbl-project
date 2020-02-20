@@ -3,8 +3,10 @@ import MainJbl from '../MainJbl';
 import LevelOne from '../LevelOne';
 import {Context} from '../../context';
 import './CanvasJbl.css';
+import LevelTwo from '../LevelTwo';
+import LevelThree from '../LevelThree';
 
-function CanvasJbl({globalWidth, lavel, roomcount1, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages}) {
+function CanvasJbl({globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn}) {
 
     const {onHideMainMsg} = useContext(Context);
 
@@ -19,7 +21,7 @@ function CanvasJbl({globalWidth, lavel, roomcount1, displayBtnTVOff, columnOn, r
     }
 
     const cls = ['canvas-jbl'];
-    cls.push(lavel);
+    cls.push(level);
 
     const clsMsg = ['main-message']
     if(showMainMsg) {
@@ -38,10 +40,29 @@ function CanvasJbl({globalWidth, lavel, roomcount1, displayBtnTVOff, columnOn, r
                     showRoomMainMsg={showRoomMainMsg}
                     messages={messages}
                 />
+                <LevelTwo
+                    showMainMsg={showMainMsg}
+                    roomCount={roomcount1}
+                    roomCount2={roomcount2}
+                    showRoomMainMsg={showRoomMainMsg}
+                    messages={messages}
+                    hidePuddle={hidePuddle}
+                    room2BgColumn={room2BgColumn}
+                >
+                </LevelTwo>
+                <LevelThree
+                    showMainMsg={showMainMsg}
+                    roomCount={roomcount1}
+                    roomCount2={roomcount2}
+                    roomCount3={roomcount3}
+                    showRoomMainMsg={showRoomMainMsg}
+                    messages={messages}
+                >
+                </LevelThree>
             </div>
             <div className={clsMsg.join(' ')}>
                 <span style={messageStyle}>
-                    <button onClick={(e) => onHideMainMsg(e)}></button>
+                    <div id="main-message-btn" onClick={(e) => onHideMainMsg(e)}></div>
                 </span>
             </div>
         </div>

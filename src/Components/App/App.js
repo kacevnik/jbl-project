@@ -17,6 +17,8 @@ function App() {
   const [globalWidth, setGlobalWidth] = useState(getGLobalWidth());
   const [countAllAns, setCountAllAns] = useState(0);
   const [room1Count, setRoom1Count] = useState(0);
+  const [room2Count, setRoom2Count] = useState(0);
+  const [room3Count, setRoom3Count] = useState(0);
   const [columnOn, setColumnOn] = useState(false);
   const [romm1Finish, setRomm1Finish] = useState(false)
   const [showMainMsg, setShowMainMsg] = useState(false)
@@ -28,7 +30,10 @@ function App() {
     {name: 'msg-3', id: 'column'},
     {name: 'msg-4', id: 'btn-on-off'},
     {name: 'msg-5', id: 'btn-light'},
+    {name: 'msg-6', id: 'mop'},
   ])
+  const [hidePuddle, setHidePuddle] = useState(false)
+  const [room2BgColumn, setRoom2BgColumn] = useState(false)
 
   const chengeRoom1Count = (name) => {
     let c = room1Count + 1
@@ -38,7 +43,26 @@ function App() {
     setMessages(false)
     setMessages(name)
     setRoomHints(roomHints.filter(el => el.name !== name))
-  
+  }
+
+  const chengeRoom2Count = (name) => {
+    let c = room2Count + 1
+    let a = countAllAns + 1
+    setRoom2Count(c);
+    setCountAllAns(a)
+    setMessages(false)
+    setMessages(name)
+    setRoomHints(roomHints.filter(el => el.name !== name))
+  }
+
+  const onHidePuddle = (name) => {
+    chengeRoom2Count(name)
+    setHidePuddle(true)
+  }
+
+  const chengeRoom2BgColumn = (name) => {
+    chengeRoom2Count(name)
+    setRoom2BgColumn(true)
   }
 
   window.addEventListener("resize", () => setGlobalWidth(getGLobalWidth()));
@@ -47,11 +71,11 @@ function App() {
     fontSize: globalWidth / 56.25
   }
 
-  const [level, setLevel] = useState('start');
+  const [level, setLevel] = useState(['start', 'level-1', 'level-2', 'level-3']);
 
-  const changeLevel = (nexLevel) => {
-    setLevel(nexLevel);
-    if (nexLevel === 'level-1') {
+  const changeLevel = () => {
+    setLevel(level.filter((ex, i) => i > 0));
+    if (level[1] === 'level-1') {
       setShowMainMsg(true)
     }
   }
@@ -108,19 +132,23 @@ function App() {
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules
+      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle
     }}>
       <div className="App" style={appStyle}>
         <CanvasJbl
           globalWidth={globalWidth}
-          lavel={level}
+          level={level[0]}
           roomcount1={room1Count}
+          roomcount2={room2Count}
+          roomcount3={room3Count}
           displayBtnTVOff={displayBtnTVOff}
           columnOn={columnOn}
           room1Finish={romm1Finish}
           showMainMsg={showMainMsg}
           showRoomMainMsg={showRoomMainMsg}
           messages={messages}
+          hidePuddle={hidePuddle}
+          room2BgColumn={room2BgColumn}
         />
       </div>
     </Context.Provider>

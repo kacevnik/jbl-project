@@ -1,17 +1,21 @@
-.btn-show-rules {
+.btn-next-level {
     width: 4.7%;
     height: 7.5%;
     top: 3.9%;
-    left: 87.3%;
+    left: 92.8%;
     position: absolute;
     opacity: 0;
     cursor: pointer;
     background: #000000;
 }
-.level-2 .btn-show-rules {
+
+.level-2 .btn-next-level {
+    width: 4.55%;
+    height: 7.5%;
     top: 2.9%;
+    left: 92.95%;
 }
 
-.btn-show-rules:hover {
+.btn-next-level:hover {
     opacity: 0.3;
 }

@@ -58,6 +58,26 @@
     animation-name: m-show;
     opacity: 0;
 }
+.room-messages.msg-6-enter.msg-6-enter-active {
+    background-image: url(img/msg-6.svg);
+    width: 19.25em;
+    height: 4.2083em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+.room-messages.msg-7-enter.msg-7-enter-active {
+    background-image: url(img/msg-7.svg);
+    width: 19.0416666em;
+    height: 3.375em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
 
 @keyframes m-show{
     0%{

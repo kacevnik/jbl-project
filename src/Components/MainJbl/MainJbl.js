@@ -17,9 +17,7 @@ function MainJbl() {
                 <div className="main-jbl-first" data-depth="0"></div>
                 <div className="main-jbl-second" data-depth="0.1"></div>
             </div>
-            <div className="main-jbl-wrap">
-                <button onClick={() => changeLevel('level-1')}>Начать веселье</button>
-            </div>
+            <div id="main-jbl-btn" onClick={() => changeLevel()}></div>
         </div>
 
     )

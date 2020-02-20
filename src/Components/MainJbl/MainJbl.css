@@ -24,30 +24,21 @@
     width: 100%;
 }
 
-.main-jbl-wrap {
+#main-jbl-btn {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 35.4166667em;
-}
-
-.main-jbl-wrap button {
-    position: absolute;
-    bottom: 0.79166667em;
-    left: 50%;
-    color: #FFFFFF;
-    background: #FF4713;
-    border: 0.08333333em solid #000000;
-    box-sizing: border-box;
-    border-radius: 4px;
-    width: 18%;
+    width: 11.291666em;
+    height: 2.3333333em;
+    top: 89%;
+    left: 40%;
+    background-color: #000000;
+    background-image: url(img/btn.svg);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 1;
     cursor: pointer;
-    height: 2em;
-    margin-left: -9%;
-    font-size: 1.125em;
 }
 
-.main-jbl-wrap button:hover {
-    opacity: 0.8;
+#main-jbl-btn:hover {
+    opacity: .7;
 }

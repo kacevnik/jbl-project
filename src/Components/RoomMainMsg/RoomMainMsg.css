@@ -14,6 +14,18 @@
     background-image: url(img/room-1-main-msg.svg);
 }
 
+.room-main-msg.room-2-msg {
+    width: 25.2083333em;
+    height: 6.9583333em;
+    background-image: url(img/room-2-main-msg.svg);
+}
+
+.room-main-msg.room-3-msg {
+    width: 20.5em;
+    height: 5.8333333em;
+    background-image: url(img/room-3-main-msg.svg);
+}
+
 .room-main-msg.show{
     animation-duration: 5s;
     animation-iteration-count: 1;

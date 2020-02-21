@@ -105,3 +105,12 @@
     width: 2.4583333em;
     height: 3.04166666em;
 }
+
+#glass-2-clone {
+    display: none;
+    position: absolute;
+    top: 40.8%;
+    left: 40%;
+    width: 2.5em;
+    height: 1.833333em;
+}

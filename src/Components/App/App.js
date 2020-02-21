@@ -24,6 +24,7 @@ function App() {
   const [showMainMsg, setShowMainMsg] = useState(false)
   const [showRoomMainMsg, setShowRoomMainMsg] = useState(false)
   const [messages, setMessages] = useState(false)
+  const [glasses, setGlasses] = useState(1)
   const [roomHints, setRoomHints] = useState([
     {name: 'msg-1', id: 'vaza'},
     {name: 'msg-2', id: 'ball-1'},
@@ -31,6 +32,8 @@ function App() {
     {name: 'msg-4', id: 'btn-on-off'},
     {name: 'msg-5', id: 'btn-light'},
     {name: 'msg-6', id: 'mop'},
+    {name: 'msg-7', id: 'column-elem'},
+    {name: 'msg-8', id: 'glasses'},
   ])
   const [hidePuddle, setHidePuddle] = useState(false)
   const [room2BgColumn, setRoom2BgColumn] = useState(false)
@@ -63,6 +66,13 @@ function App() {
   const chengeRoom2BgColumn = (name) => {
     chengeRoom2Count(name)
     setRoom2BgColumn(true)
+  }
+
+  const chengeCoutnGlasses = () => {
+    setGlasses(glasses + 1)
+    if(glasses === 2) {
+      chengeRoom2Count('msg-8')
+    }
   }
 
   window.addEventListener("resize", () => setGlobalWidth(getGLobalWidth()));
@@ -132,7 +142,7 @@ function App() {
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle
+      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses
     }}>
       <div className="App" style={appStyle}>
         <CanvasJbl

@@ -116,7 +116,7 @@ function GollArea4(){
 }
 
 function GollArea5(){
-    const { chengeRoom2BgColumn } = useContext(Context);
+    const { chengeCoutnGlasses } = useContext(Context);
 
     const dropped = (e) => {
 
@@ -125,6 +125,8 @@ function GollArea5(){
         parent.style.display = 'none'
         document.getElementById(e.dragData.name + '-clone').style.display = 'block'
         parent.classList.remove('dnd')
+
+        chengeCoutnGlasses()
 
     }
 
@@ -164,7 +166,7 @@ function LevelTwo({roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle,
             <RoomMainMsg show={showRoomMainMsg} room={'room-2-msg'}/>
             <MopElem name="mop"/>
             <Glass1Elem name="glass-1" />
-            {/* <Glass2Elem name="glass-2" /> */}
+            <Glass2Elem name="glass-2" />
             <ColumnElem />
             {hidePuddle ? ('') : (<PuddleElem />)}
             <BtnShowRules />
@@ -172,7 +174,7 @@ function LevelTwo({roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle,
             <BtnNextLevel />
             <MopElemClone />
             <Glass1ElemClone />
-            {/* <Glass2ElemClone /> */}
+            <Glass2ElemClone />
             <RoomMessages msgState={messages}/>
         </div>
     )

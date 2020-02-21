@@ -78,6 +78,16 @@
     animation-name: m-show;
     opacity: 0;
 }
+.room-messages.msg-8-enter.msg-8-enter-active {
+    background-image: url(img/msg-8.svg);
+    width: 23.5416666em;
+    height: 4.208333em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
 
 @keyframes m-show{
     0%{

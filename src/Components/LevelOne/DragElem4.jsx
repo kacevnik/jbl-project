@@ -57,6 +57,7 @@ const DragElem4 = () => {
         dragData={{name: nameElem }}
         onDrag={(e) => landedOn(e)}
         onDragEnd={(e) => landedEnd(e)}
+        dragElemOpacity={1}
       >
         
     <div style={styles}>

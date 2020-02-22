@@ -1,18 +1,18 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import MainJbl from '../MainJbl';
 import LevelOne from '../LevelOne';
-import {Context} from '../../context';
+import { Context } from '../../context';
 import './CanvasJbl.css';
 import LevelTwo from '../LevelTwo';
 import LevelThree from '../LevelThree';
 
-function CanvasJbl({globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn}) {
+function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos }) {
 
-    const {onHideMainMsg} = useContext(Context);
+    const { onHideMainMsg } = useContext(Context);
 
     const containerStyle = {
         width: globalWidth,
-        height: globalWidth/1.62454874
+        height: globalWidth / 1.62454874
     }
 
     const messageStyle = {
@@ -24,7 +24,7 @@ function CanvasJbl({globalWidth, level, roomcount1, roomcount2, roomcount3, disp
     cls.push(level);
 
     const clsMsg = ['main-message']
-    if(showMainMsg) {
+    if (showMainMsg) {
         clsMsg.push('show')
     }
     return (
@@ -48,6 +48,7 @@ function CanvasJbl({globalWidth, level, roomcount1, roomcount2, roomcount3, disp
                     messages={messages}
                     hidePuddle={hidePuddle}
                     room2BgColumn={room2BgColumn}
+                    room2BgCheptos={room2BgCheptos}
                 >
                 </LevelTwo>
                 <LevelThree

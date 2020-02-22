@@ -1,16 +1,16 @@
 import React from 'react'
 import './RoomMainMsg.css'
 
-function RoomMainMsg({room, show}) {
+function RoomMainMsg({ room, show }) {
 
     let cls = ['room-main-msg']
     cls.push(room)
-    if(show) {
+    if (show) {
         cls.push('show')
     }
 
-    
-    return(
+
+    return (
         <div className={cls.join(' ')}>
 
         </div>

@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import './LevelTwo.css';
-import {Context} from '../../context';
+import { Context } from '../../context';
 import { DropTarget } from 'react-drag-drop-container';
 import RoomMainMsg from '../RoomMainMsg'
 import BtnShowRules from '../BtnShowRules'
@@ -14,20 +14,21 @@ import Glass2Elem from './Glass2Elem'
 import Glass2ElemClone from './Glass2ElemClone'
 import MopElemClone from './MopElemClone'
 import ColumnElem from './ColumnElem'
+import Cheptos from './Cheptos'
 import PuddleElem from './PuddleElem'
 
-function RoomPanel({roomCount}){
+function RoomPanel({ roomCount }) {
     const arrElem = [false, false, false, false, false]
     const resArrEll = arrElem.map((el, idx) => {
         let cls = ['room-1-panel-elem']
-        if(idx + 1 <= roomCount ){
+        if (idx + 1 <= roomCount) {
             cls.push('show')
         }
         return (
             <div key={idx} className={cls.join(' ')}></div>
         )
     })
-    return(
+    return (
 
         <div className="room-1-panel">
             {resArrEll}
@@ -35,18 +36,18 @@ function RoomPanel({roomCount}){
     )
 }
 
-function RoomPanel2({roomCount}){
+function RoomPanel2({ roomCount }) {
     const arrElem = [false, false, false, false]
     const resArrEll = arrElem.map((el, idx) => {
         let cls = ['room-2-panel-elem']
-        if(idx + 1 <= roomCount ){
+        if (idx + 1 <= roomCount) {
             cls.push('show')
         }
         return (
             <div key={idx} className={cls.join(' ')}></div>
         )
     })
-    return(
+    return (
 
         <div className="room-2-panel">
             {resArrEll}
@@ -54,7 +55,7 @@ function RoomPanel2({roomCount}){
     )
 }
 
-function GollArea3(){
+function GollArea3() {
     const { onHidePuddle } = useContext(Context);
 
     const dropped = (e) => {
@@ -76,16 +77,16 @@ function GollArea3(){
         e.containerElem.parentNode.classList.remove('dnd-goal');
     }
 
-    return(
+    return (
         <div className="goal-area-3">
-            <DropTarget targetKey="mop" onHit={(e)=>dropped(e) } onDragEnter={(e)=>dragenter(e)} onDragLeave={(e)=>dragleave(e)}>
-                <div style={{width: '100%', height: '100%'}}></div>
+            <DropTarget targetKey="mop" onHit={(e) => dropped(e)} onDragEnter={(e) => dragenter(e)} onDragLeave={(e) => dragleave(e)}>
+                <div style={{ width: '100%', height: '100%' }}></div>
             </DropTarget>
         </div>
     )
 }
 
-function GollArea4(){
+function GollArea4() {
     const { chengeRoom2BgColumn } = useContext(Context);
 
     const dropped = (e) => {
@@ -106,16 +107,16 @@ function GollArea4(){
         e.containerElem.parentNode.classList.remove('dnd-goal');
     }
 
-    return(
+    return (
         <div className="goal-area-4">
-            <DropTarget targetKey="column-elem" onHit={(e)=>dropped(e) } onDragEnter={(e)=>dragenter(e)} onDragLeave={(e)=>dragleave(e)}>
-                <div style={{width: '100%', height: '100%'}}></div>
+            <DropTarget targetKey="column-elem" onHit={(e) => dropped(e)} onDragEnter={(e) => dragenter(e)} onDragLeave={(e) => dragleave(e)}>
+                <div style={{ width: '100%', height: '100%' }}></div>
             </DropTarget>
         </div>
     )
 }
 
-function GollArea5(){
+function GollArea5() {
     const { chengeCoutnGlasses } = useContext(Context);
 
     const dropped = (e) => {
@@ -138,20 +139,51 @@ function GollArea5(){
         e.containerElem.parentNode.classList.remove('dnd-goal');
     }
 
-    return(
+    return (
         <div className="goal-area-5">
-            <DropTarget targetKey="glasses" onHit={(e)=>dropped(e) } onDragEnter={(e)=>dragenter(e)} onDragLeave={(e)=>dragleave(e)}>
-                <div style={{width: '100%', height: '100%'}}></div>
+            <DropTarget targetKey="glasses" onHit={(e) => dropped(e)} onDragEnter={(e) => dragenter(e)} onDragLeave={(e) => dragleave(e)}>
+                <div style={{ width: '100%', height: '100%' }}></div>
+            </DropTarget>
+        </div>
+    )
+}
+function GollArea6() {
+    const { chengeRoom2BgCheptos } = useContext(Context);
+    const dropped = (e) => {
+        const parent = e.containerElem.parentNode;
+
+        parent.style.display = 'none'
+        parent.classList.remove('dnd')
+        chengeRoom2BgCheptos('msg-9')
+
+    }
+
+    const dragenter = (e) => {
+        e.containerElem.parentNode.classList.add('dnd-goal');
+    }
+
+    const dragleave = (e) => {
+        e.containerElem.parentNode.classList.remove('dnd-goal');
+    }
+
+    return (
+        <div className="goal-area-6">
+            <DropTarget targetKey="cheptos" onHit={(e) => dropped(e)} onDragEnter={(e) => dragenter(e)} onDragLeave={(e) => dragleave(e)}>
+                <div style={{ width: '100%', height: '100%' }}></div>
             </DropTarget>
         </div>
     )
 }
 
-function LevelTwo({roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle, room2BgColumn}) {
+function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos }) {
 
     let cls = ['level-two-jbl']
 
-    if(room2BgColumn){
+    if (room2BgCheptos) {
+        cls.push('cheptos-bg')
+    }
+
+    if (room2BgColumn) {
         cls.push('column-bg')
     }
 
@@ -160,14 +192,16 @@ function LevelTwo({roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle,
             <GollArea3 />
             <GollArea4 />
             <GollArea5 />
-            <RoomPanel roomCount={roomCount}/>
-            <RoomPanel2 roomCount={roomCount2}/>
+            <GollArea6 />
+            <RoomPanel roomCount={roomCount} />
+            <RoomPanel2 roomCount={roomCount2} />
             <div className="room2-counter">{roomCount2}/4</div>
-            <RoomMainMsg show={showRoomMainMsg} room={'room-2-msg'}/>
-            <MopElem name="mop"/>
+            <RoomMainMsg show={showRoomMainMsg} room={'room-2-msg'} />
+            <MopElem name="mop" />
             <Glass1Elem name="glass-1" />
             <Glass2Elem name="glass-2" />
             <ColumnElem />
+            <Cheptos name="cheptos" />
             {hidePuddle ? ('') : (<PuddleElem />)}
             <BtnShowRules />
             <BtnShowHint />
@@ -175,7 +209,7 @@ function LevelTwo({roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle,
             <MopElemClone />
             <Glass1ElemClone />
             <Glass2ElemClone />
-            <RoomMessages msgState={messages}/>
+            <RoomMessages msgState={messages} />
         </div>
     )
 }

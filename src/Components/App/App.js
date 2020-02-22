@@ -26,17 +26,19 @@ function App() {
   const [messages, setMessages] = useState(false)
   const [glasses, setGlasses] = useState(1)
   const [roomHints, setRoomHints] = useState([
-    {name: 'msg-1', id: 'vaza'},
-    {name: 'msg-2', id: 'ball-1'},
-    {name: 'msg-3', id: 'column'},
-    {name: 'msg-4', id: 'btn-on-off'},
-    {name: 'msg-5', id: 'btn-light'},
-    {name: 'msg-6', id: 'mop'},
-    {name: 'msg-7', id: 'column-elem'},
-    {name: 'msg-8', id: 'glasses'},
+    { name: 'msg-1', id: 'vaza' },
+    { name: 'msg-2', id: 'ball-1' },
+    { name: 'msg-3', id: 'column' },
+    { name: 'msg-4', id: 'btn-on-off' },
+    { name: 'msg-5', id: 'btn-light' },
+    { name: 'msg-6', id: 'mop' },
+    { name: 'msg-8', id: 'glass-1' },
+    { name: 'msg-7', id: 'column-elem' },
+    { name: 'msg-9', id: 'cheptos' },
   ])
   const [hidePuddle, setHidePuddle] = useState(false)
   const [room2BgColumn, setRoom2BgColumn] = useState(false)
+  const [room2BgCheptos, setRoom2BgCheptos] = useState(false)
 
   const chengeRoom1Count = (name) => {
     let c = room1Count + 1
@@ -68,9 +70,14 @@ function App() {
     setRoom2BgColumn(true)
   }
 
+  const chengeRoom2BgCheptos = (name) => {
+    chengeRoom2Count(name)
+    setRoom2BgCheptos(true)
+  }
+
   const chengeCoutnGlasses = () => {
     setGlasses(glasses + 1)
-    if(glasses === 2) {
+    if (glasses === 2) {
       chengeRoom2Count('msg-8')
     }
   }
@@ -135,14 +142,14 @@ function App() {
   }
 
   const ononBtnShowRules = () => {
-    if(roomHints.length > 0) {
+    if (roomHints.length > 0) {
       document.getElementById(roomHints[0].id).classList.add('dnd')
     }
   }
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses
+      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos
     }}>
       <div className="App" style={appStyle}>
         <CanvasJbl
@@ -159,6 +166,7 @@ function App() {
           messages={messages}
           hidePuddle={hidePuddle}
           room2BgColumn={room2BgColumn}
+          room2BgCheptos={room2BgCheptos}
         />
       </div>
     </Context.Provider>

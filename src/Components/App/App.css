@@ -16,6 +16,8 @@ body {
     width: 1350px;
     margin: 0 auto;
     padding: 1em;
+    overflow: hidden;
+    position: relative;
 }
 
 .pre-footer {

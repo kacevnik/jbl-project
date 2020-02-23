@@ -1,20 +1,24 @@
-.btn-show-rules {
+.btn-sound {
     width: 2.7083333em;
     height: 2.7083333em;
     top: 3.65%;
-    left: 87.25%;
+    left: 81.45%;
     position: absolute;
-    background-image: url(img/btn.svg);
+    background-image: url(img/btn.svg), url(img/btn-off.svg);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100%;
     cursor: pointer;
 }
 
-.level-2 .btn-show-rules {
+.btn-sound.off {
+    background-image: url(img/btn-off.svg);
+}
+
+.level-two-jbl .btn-sound {
     top: 2.8%;
 }
 
-.btn-show-rules:hover {
+.btn-sound:hover {
     opacity: 0.8;
 }

@@ -4,20 +4,19 @@ import RoomMainMsg from '../RoomMainMsg'
 import BtnShowRules from '../BtnShowRules'
 import BtnShowHint from '../BtnShowHint'
 import BtnNextLevel from '../BtnNextLevel'
-import RoomMessages from '../RoomMessages'
 
-function RoomPanel({roomCount}){
+function RoomPanel({ roomCount }) {
     const arrElem = [false, false, false, false, false]
     const resArrEll = arrElem.map((el, idx) => {
         let cls = ['room-1-panel-elem']
-        if(idx + 1 <= roomCount ){
+        if (idx + 1 <= roomCount) {
             cls.push('show')
         }
         return (
             <div key={idx} className={cls.join(' ')}></div>
         )
     })
-    return(
+    return (
 
         <div className="room-1-panel">
             {resArrEll}
@@ -25,18 +24,18 @@ function RoomPanel({roomCount}){
     )
 }
 
-function RoomPanel2({roomCount2}){
+function RoomPanel2({ roomCount2 }) {
     const arrElem = [false, false, false, false]
     const resArrEll = arrElem.map((el, idx) => {
         let cls = ['room-2-panel-elem']
-        if(idx + 1 <= roomCount2 ){
+        if (idx + 1 <= roomCount2) {
             cls.push('show')
         }
         return (
             <div key={idx} className={cls.join(' ')}></div>
         )
     })
-    return(
+    return (
 
         <div className="room-2-panel">
             {resArrEll}
@@ -44,18 +43,18 @@ function RoomPanel2({roomCount2}){
     )
 }
 
-function RoomPanel3({roomCount}){
+function RoomPanel3({ roomCount }) {
     const arrElem = [false, false, false]
     const resArrEll = arrElem.map((el, idx) => {
         let cls = ['room-3-panel-elem']
-        if(idx + 1 <= roomCount ){
+        if (idx + 1 <= roomCount) {
             cls.push('show')
         }
         return (
             <div key={idx} className={cls.join(' ')}></div>
         )
     })
-    return(
+    return (
 
         <div className="room-3-panel">
             {resArrEll}
@@ -63,19 +62,18 @@ function RoomPanel3({roomCount}){
     )
 }
 
-function LevelTree({roomCount, roomCount2, roomCount3, showRoomMainMsg, messages}) {
+function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg }) {
 
     return (
         <div className="level-three-jbl">
-            <RoomPanel roomCount={roomCount}/>
-            <RoomPanel2 roomCount={roomCount2}/>
-            <RoomPanel3 roomCount={roomCount3}/>
+            <RoomPanel roomCount={roomCount} />
+            <RoomPanel2 roomCount={roomCount2} />
+            <RoomPanel3 roomCount={roomCount3} />
             <div className="room3-counter">{roomCount3}/5</div>
-            <RoomMainMsg show={showRoomMainMsg} room={'room-3-msg'}/>
+            <RoomMainMsg show={showRoomMainMsg} room={'room-3-msg'} />
             <BtnShowRules />
             <BtnShowHint />
             <BtnNextLevel />
-            <RoomMessages msgState={messages}/>
         </div>
     )
 }

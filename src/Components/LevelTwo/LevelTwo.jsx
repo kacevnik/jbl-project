@@ -5,8 +5,8 @@ import { DropTarget } from 'react-drag-drop-container';
 import RoomMainMsg from '../RoomMainMsg'
 import BtnShowRules from '../BtnShowRules'
 import BtnShowHint from '../BtnShowHint'
+import BtnSound from '../BtnSound'
 import BtnNextLevel from '../BtnNextLevel'
-import RoomMessages from '../RoomMessages'
 import MopElem from './MopElem'
 import Glass1Elem from './Glass1Elem'
 import Glass1ElemClone from './Glass1ElemClone'
@@ -86,15 +86,17 @@ function GollArea3() {
     )
 }
 
-function GollArea4() {
+function GollArea4({ roomCount2 }) {
     const { chengeRoom2BgColumn } = useContext(Context);
 
     const dropped = (e) => {
 
         const parent = e.containerElem.parentNode;
+        if (roomCount2 === 3) {
+            parent.style.display = 'none'
+            parent.classList.remove('dnd')
+        }
 
-        parent.style.display = 'none'
-        parent.classList.remove('dnd')
         chengeRoom2BgColumn('msg-7')
 
     }
@@ -175,7 +177,7 @@ function GollArea6() {
     )
 }
 
-function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos }) {
+function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgColumn, room2BgCheptos, soundApp }) {
 
     let cls = ['level-two-jbl']
 
@@ -190,7 +192,7 @@ function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle
     return (
         <div className={cls.join(' ')}>
             <GollArea3 />
-            <GollArea4 />
+            <GollArea4 roomCount2={roomCount2} />
             <GollArea5 />
             <GollArea6 />
             <RoomPanel roomCount={roomCount} />
@@ -205,11 +207,11 @@ function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, messages, hidePuddle
             {hidePuddle ? ('') : (<PuddleElem />)}
             <BtnShowRules />
             <BtnShowHint />
+            <BtnSound soundApp={soundApp} />
             <BtnNextLevel />
             <MopElemClone />
             <Glass1ElemClone />
             <Glass2ElemClone />
-            <RoomMessages msgState={messages} />
         </div>
     )
 }

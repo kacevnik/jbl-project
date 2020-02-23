@@ -5,8 +5,9 @@ import { Context } from '../../context';
 import './CanvasJbl.css';
 import LevelTwo from '../LevelTwo';
 import LevelThree from '../LevelThree';
+import RoomMessages from '../RoomMessages'
 
-function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos }) {
+function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp }) {
 
     const { onHideMainMsg } = useContext(Context);
 
@@ -38,17 +39,17 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     room1Finish={room1Finish}
                     showMainMsg={showMainMsg}
                     showRoomMainMsg={showRoomMainMsg}
-                    messages={messages}
+                    soundApp={soundApp}
                 />
                 <LevelTwo
                     showMainMsg={showMainMsg}
                     roomCount={roomcount1}
                     roomCount2={roomcount2}
                     showRoomMainMsg={showRoomMainMsg}
-                    messages={messages}
                     hidePuddle={hidePuddle}
                     room2BgColumn={room2BgColumn}
                     room2BgCheptos={room2BgCheptos}
+                    soundApp={soundApp}
                 >
                 </LevelTwo>
                 <LevelThree
@@ -57,9 +58,9 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     roomCount2={roomcount2}
                     roomCount3={roomcount3}
                     showRoomMainMsg={showRoomMainMsg}
-                    messages={messages}
                 >
                 </LevelThree>
+                <RoomMessages msgState={messages} />
             </div>
             <div className={clsMsg.join(' ')}>
                 <span style={messageStyle}>

@@ -1,9 +1,21 @@
 .btn-show-hint {
-    width: 4.7%;
-    height: 7.5%;
-    top: 3.9%;
-    left: 75.8%;
+    width: 4.75%;
+    height: 7.55%;
+    top: 3.75%;
+    left: 75.75%;
     position: absolute;
-    opacity: 0;
+    background-image: url(img/btn.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
     cursor: pointer;
+}
+
+.level-two-jbl .btn-show-hint{
+    top: 2.85%;
+    left: 75.7%;
+}
+
+.btn-show-hint:hover {
+    opacity: 0.8;
 }

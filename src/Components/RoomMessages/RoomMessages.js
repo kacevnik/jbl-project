@@ -5,6 +5,7 @@ import './RoomMessages.css'
 function RoomMessages({ msgState }) {
 
     let clx = msgState ? msgState : 'msg'
+    let entr = msgState ? true : false
     let elem = null
     if (msgState) {
         for (let i = 1; i < 20; i++) {
@@ -20,8 +21,8 @@ function RoomMessages({ msgState }) {
     return (
         <ReactAddonsCSSTransitionGroup
             transitionName={clx}
-            transitionEnter={true}
-            transitionLeave={true}
+            transitionEnter={entr}
+            transitionLeave={entr}
             transitionEnterTimeout={5000}
             transitionLeaveTimeout={100}
         >

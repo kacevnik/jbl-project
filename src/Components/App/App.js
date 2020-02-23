@@ -33,12 +33,15 @@ function App() {
     { name: 'msg-5', id: 'btn-light' },
     { name: 'msg-6', id: 'mop' },
     { name: 'msg-8', id: 'glass-1' },
-    { name: 'msg-7', id: 'column-elem' },
     { name: 'msg-9', id: 'cheptos' },
+    { name: 'msg-7', id: 'column-elem' },
+    { name: 'msg-10', id: 'error-1' },
+    { name: 'msg-11', id: 'error-2' },
   ])
   const [hidePuddle, setHidePuddle] = useState(false)
   const [room2BgColumn, setRoom2BgColumn] = useState(false)
   const [room2BgCheptos, setRoom2BgCheptos] = useState(false)
+  const [soundApp, setSoundApp] = useState(true)
 
   const chengeRoom1Count = (name) => {
     let c = room1Count + 1
@@ -66,13 +69,21 @@ function App() {
   }
 
   const chengeRoom2BgColumn = (name) => {
-    chengeRoom2Count(name)
-    setRoom2BgColumn(true)
+    if (room2Count === 3) {
+      chengeRoom2Count(name)
+      setRoom2BgColumn(true)
+    } else {
+      setMessages('msg-11')
+    }
   }
 
   const chengeRoom2BgCheptos = (name) => {
     chengeRoom2Count(name)
     setRoom2BgCheptos(true)
+  }
+
+  const onBtnSountd = () => {
+    setSoundApp(!soundApp)
   }
 
   const chengeCoutnGlasses = () => {
@@ -91,6 +102,17 @@ function App() {
   const [level, setLevel] = useState(['start', 'level-1', 'level-2', 'level-3']);
 
   const changeLevel = () => {
+    let count = 0
+    if (level[1] === 'level-2') {
+      count = 5 - countAllAns
+    } else if (level[1] === 'level-3') {
+      count = 9 - countAllAns
+    } else {
+      count = 0
+    }
+    setRoomHints(roomHints.filter((el, idx) => {
+      return idx + 1 > count
+    }))
     setLevel(level.filter((ex, i) => i > 0));
     if (level[1] === 'level-1') {
       setShowMainMsg(true)
@@ -117,6 +139,8 @@ function App() {
     if (room1Count === 4) {
       chengeRoom1Count('msg-5')
       setRomm1Finish(true)
+    } else {
+      setMessages('msg-10')
     }
   }
 
@@ -143,13 +167,16 @@ function App() {
 
   const ononBtnShowRules = () => {
     if (roomHints.length > 0) {
-      document.getElementById(roomHints[0].id).classList.add('dnd')
+      const elem = document.getElementById(roomHints[0].id)
+      if (elem) {
+        elem.classList.add('dnd')
+      }
     }
   }
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos
+      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd
     }}>
       <div className="App" style={appStyle}>
         <CanvasJbl
@@ -167,6 +194,7 @@ function App() {
           hidePuddle={hidePuddle}
           room2BgColumn={room2BgColumn}
           room2BgCheptos={room2BgCheptos}
+          soundApp={soundApp}
         />
       </div>
     </Context.Provider>

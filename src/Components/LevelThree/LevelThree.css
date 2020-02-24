@@ -1,6 +1,6 @@
 .level-three-jbl {
     display: none;
-    background-image: url(img/all.svg);
+    background-image: url(img/all.svg), url(img/all-washer.svg);
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -10,12 +10,32 @@
     overflow: hidden;
 }
 
+.level-three-jbl.washer {
+    background-image: url(img/all-washer.svg);
+}
+
 .canvas-jbl.level-3 .level-three-jbl{
     display: block;
 }
 
+.room-all-panel {
+    background-image: url(img/room-panel.svg), url(img/room-panel-all.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: absolute;
+    width: 28.625em;
+    height: 3.45833333em;
+    left: 12.5%;
+    top: 1.7%;
+}
+
+.room-all-panel.all {
+    background-image: url(img/room-panel-all.svg);
+}
+
 .room3-counter {
-    top: 7.2%;
+    top: 6.2%;
     position: absolute;
     left: 3.5%;
     font-size: 1.1em;
@@ -23,10 +43,10 @@
 
 .room-3-panel {
     position: absolute;
-    width: 12.6%;
-    height: 9.8%;
-    top: 2.7%;
-    left: 52.8%;
+    width: 25%;
+    height: 100%;
+    top: 0;
+    left: 75%;
 }
 
 .room-3-panel-elem {
@@ -37,4 +57,50 @@
     background-repeat: no-repeat;
     background-size: 56%;
     float: left;
+}
+
+.room-3-panel-elem.show {
+    background-image: url(img/jbl-on.svg);
+}
+
+.goal-area-7 {
+    position: absolute;
+    width: 17%;
+    height: 14%;
+    top: 40%;
+    left: 30%;
+}
+
+#key-elem-clone {
+    top: 66.1%;
+    left: 38.2%;
+    width: 4em;
+    height: 1.45833333em;
+    position: absolute;
+    display: none;
+}
+
+.goal-area-8 {
+    position: absolute;
+    top: 47%;
+    left: 51%;
+    width: 9%;
+    height: 10%;
+}
+
+#paper-clone {
+    position: absolute;
+    left: 53.6%;
+    top: 51.5%;
+    width: 2.125em;
+    height: 6.9583333em;
+    display: none;
+}
+
+#water {
+    position: absolute;
+    width: 6em;
+    height: 11.708333333em;
+    top: 45%;
+    left: 34.75%;
 }

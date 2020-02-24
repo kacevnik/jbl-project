@@ -11,7 +11,7 @@
     cursor: pointer;
 }
 
-.level-2 .btn-next-level {
+.level-2 .btn-next-level, .level-3 .btn-next-level {
     top: 2.8%;
 }
 

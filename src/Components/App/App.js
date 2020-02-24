@@ -21,6 +21,7 @@ function App() {
   const [room3Count, setRoom3Count] = useState(0);
   const [columnOn, setColumnOn] = useState(false);
   const [romm1Finish, setRomm1Finish] = useState(false)
+  const [room3Finish, setRomm3Finish] = useState(false)
   const [showMainMsg, setShowMainMsg] = useState(false)
   const [showRoomMainMsg, setShowRoomMainMsg] = useState(false)
   const [messages, setMessages] = useState(false)
@@ -35,6 +36,9 @@ function App() {
     { name: 'msg-8', id: 'glass-1' },
     { name: 'msg-9', id: 'cheptos' },
     { name: 'msg-7', id: 'column-elem' },
+    { name: 'msg-12', id: 'key-elem' },
+    { name: 'msg-13', id: 'paper' },
+    { name: 'msg-14', id: 'btn-washer' },
     { name: 'msg-10', id: 'error-1' },
     { name: 'msg-11', id: 'error-2' },
   ])
@@ -42,6 +46,7 @@ function App() {
   const [room2BgColumn, setRoom2BgColumn] = useState(false)
   const [room2BgCheptos, setRoom2BgCheptos] = useState(false)
   const [soundApp, setSoundApp] = useState(true)
+  const [hideWater, setHideWater] = useState(false)
 
   const chengeRoom1Count = (name) => {
     let c = room1Count + 1
@@ -61,6 +66,21 @@ function App() {
     setMessages(false)
     setMessages(name)
     setRoomHints(roomHints.filter(el => el.name !== name))
+  }
+
+  const chengeRoom3Count = (name) => {
+    let c = room3Count + 1
+    let a = countAllAns + 1
+    setRoom3Count(c);
+    setCountAllAns(a)
+    setMessages(false)
+    setMessages(name)
+    setRoomHints(roomHints.filter(el => el.name !== name))
+  }
+
+  const onKeyElemHendler = (name) => {
+    chengeRoom3Count(name)
+    setHideWater(!hideWater)
   }
 
   const onHidePuddle = (name) => {
@@ -104,12 +124,13 @@ function App() {
   const changeLevel = () => {
     let count = 0
     if (level[1] === 'level-2') {
-      count = 5 - countAllAns
+      count = 5 - room1Count
     } else if (level[1] === 'level-3') {
-      count = 9 - countAllAns
+      count = 4 - room2Count
     } else {
       count = 0
     }
+
     setRoomHints(roomHints.filter((el, idx) => {
       return idx + 1 > count
     }))
@@ -141,6 +162,15 @@ function App() {
       setRomm1Finish(true)
     } else {
       setMessages('msg-10')
+    }
+  }
+
+  const onBtnWasher = () => {
+    if (room3Count === 2) {
+      chengeRoom3Count('msg-14')
+      setRomm3Finish(true)
+    } else {
+      setMessages('msg-15')
     }
   }
 
@@ -176,7 +206,7 @@ function App() {
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd
+      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler
     }}>
       <div className="App" style={appStyle}>
         <CanvasJbl
@@ -195,6 +225,9 @@ function App() {
           room2BgColumn={room2BgColumn}
           room2BgCheptos={room2BgCheptos}
           soundApp={soundApp}
+          room3Finish={room3Finish}
+          hideWater={hideWater}
+          countAllAns={countAllAns}
         />
       </div>
     </Context.Provider>

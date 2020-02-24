@@ -37,6 +37,13 @@
     left: 32.8%;
 }
 
+.level-3 .room-2-panel {
+    width: 33%;
+    height: 100%;
+    top: 0;
+    left: 42%;
+}
+
 .room-2-panel-elem {
     width: 25%;
     height: 100%;

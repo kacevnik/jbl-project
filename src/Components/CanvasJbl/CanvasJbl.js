@@ -7,7 +7,7 @@ import LevelTwo from '../LevelTwo';
 import LevelThree from '../LevelThree';
 import RoomMessages from '../RoomMessages'
 
-function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp }) {
+function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns }) {
 
     const { onHideMainMsg } = useContext(Context);
 
@@ -58,6 +58,10 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     roomCount2={roomcount2}
                     roomCount3={roomcount3}
                     showRoomMainMsg={showRoomMainMsg}
+                    soundApp={soundApp}
+                    room3Finish={room3Finish}
+                    hideWater={hideWater}
+                    countAllAns={countAllAns}
                 >
                 </LevelThree>
                 <RoomMessages msgState={messages} />

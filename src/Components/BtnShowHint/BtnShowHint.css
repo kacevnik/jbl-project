@@ -11,7 +11,7 @@
     cursor: pointer;
 }
 
-.level-two-jbl .btn-show-hint{
+.level-two-jbl .btn-show-hint, .level-three-jbl .btn-show-hint{
     top: 2.85%;
     left: 75.7%;
 }

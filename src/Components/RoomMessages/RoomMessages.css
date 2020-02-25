@@ -98,6 +98,26 @@
     animation-name: m-show;
     opacity: 0;
 }
+.room-messages.msg-10-enter.msg-10-enter-active {
+    background-image: url(img/msg-10.svg);
+    width: 17.79166666em;
+    height: 3.375em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+.room-messages.msg-11-enter.msg-11-enter-active {
+    background-image: url(img/msg-11.svg);
+    width: 20.20833333em;
+    height: 3.375em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
 .room-messages.msg-12-enter.msg-12-enter-active {
     background-image: url(img/msg-12.svg);
     width: 16.125em;
@@ -122,6 +142,16 @@
     background-image: url(img/msg-14.svg);
     width: 21.5em;
     height: 4.20833333em;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: m-show;
+    opacity: 0;
+}
+.room-messages.msg-15-enter.msg-15-enter-active {
+    background-image: url(img/msg-15.svg);
+    width: 14.875em;
+    height: 4.208333333em;
     animation-duration: 5s;
     animation-iteration-count: 1;
     animation-direction: alternate;

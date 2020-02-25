@@ -1,0 +1,8 @@
+.btn-arrow {
+    position: absolute;
+    bottom: 8%;
+    right: 4%;
+    width: 17%;
+    height: 9%;
+    cursor: pointer;
+}

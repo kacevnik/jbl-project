@@ -13,6 +13,7 @@ import Paper from './Paper'
 import PaperClone from './PaperClone'
 import BtnWasher from './Washer'
 import Water from './Water'
+import BtnArrow from '../BtnArrow'
 
 function RoomPanel({ roomCount }) {
     const arrElem = [false, false, false, false, false]
@@ -135,7 +136,7 @@ function GollArea8() {
     )
 }
 
-function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundApp, room3Finish, hideWater, countAllAns }) {
+function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundApp, room3Finish, hideWater, countAllAns, soundAppAnime }) {
 
     let cls = ['level-three-jbl']
     if (room3Finish) {
@@ -160,7 +161,7 @@ function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundAp
             <BtnShowRules />
             <BtnShowHint />
             <BtnNextLevel />
-            <BtnSound soundApp={soundApp} />
+            <BtnSound soundApp={soundApp} soundAppAnime={soundAppAnime}/>
             <GollArea7 />
             <GollArea8 />
             <KeyElem name="key-elem" />
@@ -168,6 +169,7 @@ function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundAp
             <Paper name="paper" />
             {room3Finish ? ('') : (<BtnWasher />)}
             {room3Finish ? ('') : (<PaperClone />)}
+            {!room3Finish ? ('') : (<BtnArrow />)}
         </div>
     )
 }

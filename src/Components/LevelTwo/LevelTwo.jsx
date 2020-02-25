@@ -16,6 +16,7 @@ import MopElemClone from './MopElemClone'
 import ColumnElem from './ColumnElem'
 import Cheptos from './Cheptos'
 import PuddleElem from './PuddleElem'
+import BtnArrow from '../BtnArrow'
 
 function RoomPanel({ roomCount }) {
     const arrElem = [false, false, false, false, false]
@@ -177,7 +178,7 @@ function GollArea6() {
     )
 }
 
-function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgColumn, room2BgCheptos, soundApp }) {
+function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, soundAppAnime }) {
 
     let cls = ['level-two-jbl']
 
@@ -207,11 +208,12 @@ function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgC
             {hidePuddle ? ('') : (<PuddleElem />)}
             <BtnShowRules />
             <BtnShowHint />
-            <BtnSound soundApp={soundApp} />
+            <BtnSound soundApp={soundApp} soundAppAnime={soundAppAnime} />
             <BtnNextLevel />
             <MopElemClone />
             <Glass1ElemClone />
             <Glass2ElemClone />
+            {!room2BgColumn ? ('') : (<BtnArrow />)}
         </div>
     )
 }

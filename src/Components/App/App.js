@@ -14,7 +14,12 @@ function App() {
     return window.innerWidth >= 1350 ? 1350 : window.innerWidth - window.innerWidth / 56.25 * 2;
   }
 
+  const getGlobalScreen = () => {
+    return window.innerHeight > window.innerWidth ? true : false
+  }
+
   const [globalWidth, setGlobalWidth] = useState(getGLobalWidth());
+  const [turnScreen, setTurnScreen] = useState(getGlobalScreen());
   const [countAllAns, setCountAllAns] = useState(0);
   const [room1Count, setRoom1Count] = useState(0);
   const [room2Count, setRoom2Count] = useState(0);
@@ -45,7 +50,8 @@ function App() {
   const [hidePuddle, setHidePuddle] = useState(false)
   const [room2BgColumn, setRoom2BgColumn] = useState(false)
   const [room2BgCheptos, setRoom2BgCheptos] = useState(false)
-  const [soundApp, setSoundApp] = useState(true)
+  const [soundApp, setSoundApp] = useState(false)
+  const [soundAppAnime, setSoundAppAnime] = useState(true)
   const [hideWater, setHideWater] = useState(false)
 
   const chengeRoom1Count = (name) => {
@@ -104,6 +110,7 @@ function App() {
 
   const onBtnSountd = () => {
     setSoundApp(!soundApp)
+    setSoundAppAnime(false)
   }
 
   const chengeCoutnGlasses = () => {
@@ -113,13 +120,16 @@ function App() {
     }
   }
 
-  window.addEventListener("resize", () => setGlobalWidth(getGLobalWidth()));
+  window.addEventListener("resize", () => {
+    setGlobalWidth(getGLobalWidth())
+    setTurnScreen(getGlobalScreen())
+  })
 
   const appStyle = {
     fontSize: globalWidth / 56.25
   }
 
-  const [level, setLevel] = useState(['start', 'level-1', 'level-2', 'level-3']);
+  const [level, setLevel] = useState(['start', 'level-1', 'level-2', 'level-3', 'final']);
 
   const changeLevel = () => {
     let count = 0
@@ -228,6 +238,8 @@ function App() {
           room3Finish={room3Finish}
           hideWater={hideWater}
           countAllAns={countAllAns}
+          turnScreen={turnScreen}
+          soundAppAnime={soundAppAnime}
         />
       </div>
     </Context.Provider>

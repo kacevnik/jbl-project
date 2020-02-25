@@ -23,6 +23,7 @@ import BtnShowRules from '../BtnShowRules'
 import BtnShowHint from '../BtnShowHint'
 import BtnSound from '../BtnSound'
 import BtnNextLevel from '../BtnNextLevel'
+import BtnArrow from '../BtnArrow'
 
 function RoomPanel({ roomCount }) {
     const arrElem = [false, false, false, false, false]
@@ -106,7 +107,7 @@ function GollArea2() {
     )
 }
 
-function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMainMsg, soundApp }) {
+function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMainMsg, soundApp,soundAppAnime }) {
 
     let btn = <DragELem7 name="btn-on-off" />
     let light = <BtnLight name="btn-off-ligth" />
@@ -150,7 +151,7 @@ function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomM
             {column}
             <BtnShowRules />
             <BtnShowHint />
-            <BtnSound soundApp={soundApp} />
+            <BtnSound soundApp={soundApp} soundAppAnime={soundAppAnime} />
             <BtnNextLevel />
             {room1Finish ? ('') : (<DragElemClone1 />)}
             {room1Finish ? ('') : (<DragElemClone2 />)}
@@ -158,6 +159,7 @@ function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomM
             {room1Finish ? ('') : (<DragElemClone4 />)}
             {room1Finish ? ('') : (<DragElemClone5 />)}
             {room1Finish ? ('') : (<DragElemClone6 />)}
+            {!room1Finish ? ('') : (<BtnArrow />)}
         </div>
     )
 }

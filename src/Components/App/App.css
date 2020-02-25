@@ -2,6 +2,10 @@
     font-family: 'Gordita-Regular';
     src: local('Gordita-Regular'), url(../../fonts/Gordita-Regular.ttf) format('truetype');
 }
+@font-face {
+    font-family: 'Gordita-Bold';
+    src: local('Gordita-Bold'), url(../../fonts/Gordita-Bold.ttf) format('truetype');
+}
 
 body {
     font-family: 'Gordita-Regular';

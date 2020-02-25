@@ -5,15 +5,19 @@ import { Context } from '../../context';
 import './CanvasJbl.css';
 import LevelTwo from '../LevelTwo';
 import LevelThree from '../LevelThree';
+import Final from '../Final';
+import TurnScreen from '../TurnScreen';
 import RoomMessages from '../RoomMessages'
 
-function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns }) {
+function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns, turnScreen, soundAppAnime }) {
 
     const { onHideMainMsg } = useContext(Context);
 
+    let sep = level === 'final' ? 1.06299212598 : 1.62454874
+
     const containerStyle = {
         width: globalWidth,
-        height: globalWidth / 1.62454874
+        height: globalWidth / sep
     }
 
     const messageStyle = {
@@ -40,6 +44,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     showMainMsg={showMainMsg}
                     showRoomMainMsg={showRoomMainMsg}
                     soundApp={soundApp}
+                    soundAppAnime={soundAppAnime}
                 />
                 <LevelTwo
                     showMainMsg={showMainMsg}
@@ -50,6 +55,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     room2BgColumn={room2BgColumn}
                     room2BgCheptos={room2BgCheptos}
                     soundApp={soundApp}
+                    soundAppAnime={soundAppAnime}
                 >
                 </LevelTwo>
                 <LevelThree
@@ -62,8 +68,10 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     room3Finish={room3Finish}
                     hideWater={hideWater}
                     countAllAns={countAllAns}
+                    soundAppAnime={soundAppAnime}
                 >
                 </LevelThree>
+                <Final countAllAns={countAllAns}/>
                 <RoomMessages msgState={messages} />
             </div>
             <div className={clsMsg.join(' ')}>
@@ -71,6 +79,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     <div id="main-message-btn" onClick={(e) => onHideMainMsg(e)}></div>
                 </span>
             </div>
+            {turnScreen ? (<TurnScreen />) : ('')}
         </div>
     )
 }

@@ -1,0 +1,11 @@
+.turn-screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #5A5ADF;
+    background-image: url(img/bg.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: 1021;
+}

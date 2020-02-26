@@ -1,8 +1,4 @@
 .level-final {
-    background-image: url(img/bg-1.svg);
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: contain;
     position: relative;
     width: 100%;
     height: 100%;
@@ -10,12 +6,58 @@
     display: none;
 }
 
-.level-final.bg-2 {
-    background-image: url(img/bg-2.svg);
+.level-final .final-jbl-first{
+    background-image: url(img/bg-1.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
 }
 
-.level-final.bg-3 {
+.level-final .final-jbl-second{
+    background-image: url(img/paralax.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.level-final.bg-2 .final-jbl-first{
+    background-image: url(img/bg-2.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.level-final.bg-2 .final-jbl-second{
+    background-image: url(img/paralax.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.level-final.bg-3 .final-jbl-first{
     background-image: url(img/bg-3.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.level-final.bg-3 .final-jbl-second{
+    background-image: url(img/paralax.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
 }
 
 .final .level-final {
@@ -24,8 +66,8 @@
 
 .final-counter {
     position: absolute;
-    top: 6.1%;
-    left: 18.5%;
+    top: 5.1%;
+    left: 15.5%;
     width: 10%;
     height: auto;
     font-size: 2em;
@@ -36,10 +78,14 @@
 
 .level-final.bg-2 .final-counter {
     color: #4AE6D1;
+    top: 6.5%;
+    left: 18.5%;
 }
 
 .level-final.bg-3 .final-counter {
     color: #FFF480;
+    top: 6.5%;
+    left: 18.5%;
 }
 
 .social-btns {
@@ -47,17 +93,13 @@
     width: 15%;
     height: auto;
     top: 48%;
-    left: 43%;
+    left: 42.5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.bg-2 .social-btns {
-    top: 45%;
-}
-
-.bg-3 .social-btns {
+.bg-2 .social-btns, .bg-3 .social-btns {
     top: 44%;
 }
 
@@ -98,7 +140,7 @@
     position: absolute;
     width: 13em;
     height: 4em;
-    top: 88%;
+    top: 90%;
     left: 12%;
     background-image: url(img/bay.svg);
     background-position: top center;
@@ -107,6 +149,24 @@
     color: transparent;
 }
 
-.bay:hover {
+.more {
+    position: absolute;
+    width: 11.5833333333em;
+    height: 4em;
+    top: 90%;
+    left: 37%;
+    background-image: url(img/more.svg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: transparent;
+    cursor: pointer;
+}
+
+.bg-2 .bay, .bg-3 .bay, .bg-2 .more, .bg-3 .more {
+    top: 85%;
+}
+
+.bay:hover, .more:hover {
     opacity: .7;
 }

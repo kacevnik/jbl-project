@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const KeyElem = () => {
+const KeyElem = ({hintRotateElem}) => {
+
+    const { setHintRotateElem } = useContext(Context);
 
     const nameElem = 'key-elem';
+    let cls = []
+  
+    if(hintRotateElem === nameElem){
+      cls.push('dnd shake shake-rotate')
+    }
 
     useEffect(() => {
         document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -18,6 +26,7 @@ const KeyElem = () => {
     }
 
     const landedOn = (e) => {
+        setHintRotateElem(false)
         document.getElementById(e.name).classList.add('dnd')
         let areaLeft = document.querySelector('.level-three-jbl').getBoundingClientRect().left;
         let elemLeft = parseInt(document.querySelector('#' + e.name + ' .ddcontainerghost').style.left)
@@ -47,7 +56,7 @@ const KeyElem = () => {
     }
 
     const landedEnd = (e) => {
-        document.getElementById(e.name).classList.remove('dnd')
+        setHintRotateElem(false)
     }
 
     return (
@@ -60,7 +69,7 @@ const KeyElem = () => {
                 dragElemOpacity={1}
             >
 
-                <div style={styles}>
+                <div style={styles} className={cls.join(' ')}>
                     <svg viewBox="0 0 100 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="path-1-inside-1" fill="white">
                             <path fillRule="evenodd" clipRule="evenodd" d="M19.7019 19.3107L14.6914 9.01729L4.75104 7.25652C8.66773 2.90044 14.6767 0.603856 20.8696 1.70082C27.4261 2.8622 32.4825 7.52514 34.4556 13.4249L91.1758 23.472C95.727 24.2781 98.7629 28.6211 97.9567 33.1722C97.1506 37.7234 92.8076 40.7593 88.2565 39.9531L31.5362 29.9061C27.6566 34.7692 21.3062 37.4116 14.7497 36.2502C8.55686 35.1533 3.70235 30.9324 1.52023 25.496L11.4606 27.2568L19.7019 19.3107ZM87.9872 34.3653C89.5717 34.646 91.0837 33.5891 91.3643 32.0046C91.645 30.4201 90.588 28.9081 89.0036 28.6274C87.4191 28.3468 85.9071 29.4037 85.6264 30.9882C85.3458 32.5727 86.4027 34.0847 87.9872 34.3653Z" />

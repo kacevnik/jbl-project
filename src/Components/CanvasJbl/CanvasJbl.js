@@ -9,14 +9,20 @@ import Final from '../Final';
 import TurnScreen from '../TurnScreen';
 import RoomMessages from '../RoomMessages'
 
-function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns, turnScreen, soundAppAnime }) {
+function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns, turnScreen, soundAppAnime, hintRotateElem }) {
 
     const { onHideMainMsg } = useContext(Context);
 
-    let sep = level === 'final' ? 1.06299212598 : 1.58823529412
+    let w = globalWidth
+
+    let sep = level === 'final' ? 1.03053435115 : 1.58823529412
+    if (level === 'start' && globalWidth <= 768 && turnScreen) {
+        sep = 0.45714285714
+        w = w + 56.25 * 2
+    }
 
     const containerStyle = {
-        width: globalWidth,
+        width: w,
         height: globalWidth / sep
     }
 
@@ -27,6 +33,8 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
 
     const cls = ['canvas-jbl'];
     cls.push(level);
+
+    if (turnScreen) cls.push('turnscreen');
 
     const clsMsg = ['main-message']
     if (showMainMsg) {
@@ -45,6 +53,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     showRoomMainMsg={showRoomMainMsg}
                     soundApp={soundApp}
                     soundAppAnime={soundAppAnime}
+                    hintRotateElem={hintRotateElem}
                 />
                 <LevelTwo
                     showMainMsg={showMainMsg}
@@ -56,6 +65,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     room2BgCheptos={room2BgCheptos}
                     soundApp={soundApp}
                     soundAppAnime={soundAppAnime}
+                    hintRotateElem={hintRotateElem}
                 >
                 </LevelTwo>
                 <LevelThree
@@ -69,6 +79,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     hideWater={hideWater}
                     countAllAns={countAllAns}
                     soundAppAnime={soundAppAnime}
+                    hintRotateElem={hintRotateElem}
                 >
                 </LevelThree>
                 <Final countAllAns={countAllAns}/>
@@ -79,7 +90,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     <div id="main-message-btn" onClick={(e) => onHideMainMsg(e)}></div>
                 </span>
             </div>
-            {turnScreen ? (<TurnScreen />) : ('')}
+            {turnScreen && level !== 'start'  ? (<TurnScreen />) : ('')}
         </div>
     )
 }

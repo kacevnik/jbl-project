@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const Glass1Elem = () => {
+const Glass1Elem = ({hintRotateElem}) => {
+
+  const { setHintRotateElem } = useContext(Context);
 
   const nameElem = 'glass-1';
+  let cls = []
+
+  if(hintRotateElem === nameElem){
+    cls.push('dnd shake shake-rotate')
+  }
 
   useEffect(() => {
     document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -18,6 +26,7 @@ const Glass1Elem = () => {
   }
 
   const landedOn = (e) => {
+    setHintRotateElem(false)
     document.getElementById(e.name).classList.add('dnd')
     let areaLeft = document.querySelector('.level-two-jbl').getBoundingClientRect().left;
     let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
@@ -47,7 +56,7 @@ const Glass1Elem = () => {
   }
 
   const landedEnd = (e) => {
-    document.getElementById(e.name).classList.remove('dnd')
+    setHintRotateElem(false)
   }
 
   return (
@@ -60,7 +69,7 @@ const Glass1Elem = () => {
         dragElemOpacity={1}
       >
         
-        <div style={styles}>
+        <div style={styles} className={cls.join(' ')}>
             <svg viewBox="0 0 51 84" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.43984 80.0367L0.745118 6.01952C16.925 9.83385 33.7927 9.79519 49.9628 5.91407L41.4631 79.9681C30.8538 81.6023 20.0532 81.6261 9.43984 80.0367Z" stroke="black"/>
                 <path d="M5.47878 7.3344C5.63351 7.35897 5.81928 7.38813 6.03325 7.42113C6.72921 7.52844 7.72382 7.67633 8.91975 7.83888C11.3107 8.16384 14.5106 8.54799 17.7394 8.78321C20.9748 9.01891 24.4921 9.0419 27.1958 9.0064C28.5488 8.98863 29.7002 8.95619 30.5138 8.92817C30.7937 8.91853 31.0336 8.90941 31.228 8.90159C30.9901 10.8769 30.0544 14.2737 26.0138 15.4949C22.1265 16.0403 20.6545 15.5767 19.773 15.0388C19.5421 14.8979 19.3406 14.7451 19.1327 14.5816C19.1021 14.5576 19.0712 14.5332 19.0398 14.5084C18.8634 14.369 18.6738 14.2191 18.471 14.0819C17.9692 13.7423 17.377 13.4713 16.4789 13.3901C15.2006 13.2746 14.4763 13.6859 13.78 14.0813C13.7381 14.1051 13.6962 14.1289 13.6544 14.1525C12.9652 14.5408 12.1903 14.9397 10.6226 14.9321C9.08866 14.8182 8.02052 14.4336 7.27311 13.9095C6.52751 13.3866 6.06626 12.7005 5.78538 11.922C5.27298 10.5017 5.36895 8.81928 5.47878 7.3344Z" fill="#FF4713" stroke="black"/>

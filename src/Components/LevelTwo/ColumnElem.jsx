@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const ColumnElem = () => {
+const ColumnElem = ({hintRotateElem}) => {
+
+  const { setHintRotateElem } = useContext(Context);
 
   const nameElem = 'column-elem';
+  let cls = []
+
+  if(hintRotateElem === nameElem){
+    cls.push('dnd shake shake-rotate')
+  }
 
   useEffect(() => {
     document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -18,6 +26,7 @@ const ColumnElem = () => {
   }
 
   const landedOn = (e) => {
+    setHintRotateElem(false)
     document.getElementById(e.name).classList.add('dnd')
     let areaLeft = document.querySelector('.level-two-jbl').getBoundingClientRect().left;
     let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
@@ -47,7 +56,7 @@ const ColumnElem = () => {
   }
 
   const landedEnd = (e) => {
-    document.getElementById(e.name).classList.remove('dnd')
+    setHintRotateElem(false)
   }
 
   return (
@@ -60,7 +69,7 @@ const ColumnElem = () => {
         dragElemOpacity={1}
       >
         
-        <div style={styles}>
+        <div style={styles} className={cls.join(' ')}>
             <svg viewBox="0 0 64 140" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M61.9407 61.1428C60.3383 22.6895 59.3366 21.1913 58.6356 17.1962C58.3351 15.1986 56.5323 10.3045 55.9314 9.0061C55.2303 7.30816 53.8281 6.90864 52.1254 6.40924C50.5229 5.90985 47.2178 5.01095 44.0128 3.61265C40.7077 2.31422 39.5058 2.31421 39.5058 2.31421L38.2038 2.21435C34.0974 1.91471 30.0912 1.91471 25.9848 2.21435L24.6828 2.31421C24.6828 2.31421 23.4809 2.31422 20.1758 3.61265C16.8707 4.91107 13.6656 5.90985 12.0632 6.40924C10.4607 6.90864 9.0585 7.40804 8.25725 9.0061C7.55616 10.704 6.15397 13.8003 5.55304 17.1962C4.85195 21.0914 3.8504 22.6895 2.24791 61.1428C2.24791 61.1428 1.74716 91.3062 2.14778 99.8958C2.5484 108.485 3.04914 117.474 3.54992 120.571C4.0507 123.767 5.15245 129.56 5.15245 129.56L7.65634 137.151C7.85666 137.85 8.55772 138.349 9.25881 138.349H15.7689C17.071 138.349 18.373 138.05 19.4747 137.55L20.6766 137.051C21.0772 136.851 21.4778 136.851 21.8785 137.051L23.0803 137.75C23.5811 138.05 24.0819 138.149 24.6828 138.149H39.2054C39.7062 138.149 40.3071 138.05 40.8079 137.75L42.0097 137.051C42.4104 136.851 42.9111 136.851 43.2116 137.051L44.4135 137.55C45.6154 138.05 46.8172 138.349 48.1192 138.349H54.6293C55.4306 138.349 56.0315 137.85 56.2319 137.151L58.7357 129.56C58.7357 129.56 59.8374 123.667 60.3382 120.571C60.839 117.375 61.3398 108.485 61.7404 99.8958C62.4415 91.3062 61.9407 61.1428 61.9407 61.1428Z" fill="#404041" stroke="#231F20" strokeWidth="2" strokeMiterlimit="10"/>
             <path d="M39.7409 114.328V113.828H39.2409H34.8526H34.3522L34.3526 114.329L34.3563 119.666C34.3563 119.666 34.3563 119.666 34.3563 119.666C34.3561 120.889 33.5043 121.761 32.5951 121.761C31.6863 121.761 30.8339 120.886 30.8339 119.666L30.8339 93.4253V92.9253H30.3339H25.9493H25.4493V93.4253L25.4493 124.093V124.593H25.9493H39.2409H39.7409V124.093L39.7409 114.328Z" fill="#FBFF3F" stroke="black"/>

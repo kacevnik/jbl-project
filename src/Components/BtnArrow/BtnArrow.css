@@ -1,8 +1,16 @@
-.btn-arrow {
+
+.level-1 .btn-arrow.arrow-appear.arrow-appear-active {
+    opacity: 0;
+    transform: opacity 1s ease;
+}
+
+.level-1 .btn-arrow {
+    background-image: url(img/bg-1.svg);
     position: absolute;
-    bottom: 8%;
-    right: 4%;
-    width: 17%;
-    height: 9%;
+    bottom: 3%;
+    right: 1%;
+    width: 11.6666666667em;
+    height: 6.875em;
     cursor: pointer;
 }
+

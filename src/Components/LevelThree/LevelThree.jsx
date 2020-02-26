@@ -136,7 +136,7 @@ function GollArea8() {
     )
 }
 
-function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundApp, room3Finish, hideWater, countAllAns, soundAppAnime }) {
+function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundApp, room3Finish, hideWater, countAllAns, soundAppAnime, hintRotateElem }) {
 
     let cls = ['level-three-jbl']
     if (room3Finish) {
@@ -164,10 +164,10 @@ function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundAp
             <BtnSound soundApp={soundApp} soundAppAnime={soundAppAnime}/>
             <GollArea7 />
             <GollArea8 />
-            <KeyElem name="key-elem" />
+            <KeyElem name="key-elem" hintRotateElem={hintRotateElem}/>
             <KeyElemClone />
-            <Paper name="paper" />
-            {room3Finish ? ('') : (<BtnWasher />)}
+            <Paper name="paper" hintRotateElem={hintRotateElem}/>
+            {room3Finish ? ('') : (<BtnWasher hintRotateElem={hintRotateElem}/>)}
             {room3Finish ? ('') : (<PaperClone />)}
             {!room3Finish ? ('') : (<BtnArrow />)}
         </div>

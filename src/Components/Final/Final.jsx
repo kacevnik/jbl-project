@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Final.css';
+import Parallax from 'parallax-js';
 
 
 function Final({countAllAns}) {
+
+    useEffect(() => {
+        new Parallax(document.getElementById('scene-final'));
+    });
 
     let url = ''
     const urlProgect = 'https://medialeaks.ru/jbl'
@@ -45,17 +50,26 @@ function Final({countAllAns}) {
         cls.push('bg-3')
     }
 
+    const reload = () => {
+        window.location.reload()
+    }
+
     return (
         <div className={cls.join(' ')}>
-                <div className="final-counter">
-                        {countAllAns}/12
-                </div>
-                <div className="social-btns">
-                    <div className="btn vk" onClick={() => shareVk()}> </div>
-                    <div className="btn twitter" onClick={() => shareTwitter()}> </div>
-                    <div className="btn facebook" onClick={() => shareFacebook()}> </div>
-                </div>
-                <a href="http://ysndex.ru" className="bay" target="_blank" rel="noopener noreferrer">Купить</a>
+            <div id="scene-final">
+                <div className="final-jbl-first" data-depth="0"></div>
+                <div className="final-jbl-second" data-depth="0.1"></div>
+            </div>
+            <div className="final-counter">
+                    {countAllAns}/12
+            </div>
+            <div className="social-btns">
+                <div className="btn vk" onClick={() => shareVk()}> </div>
+                <div className="btn twitter" onClick={() => shareTwitter()}> </div>
+                <div className="btn facebook" onClick={() => shareFacebook()}> </div>
+            </div>
+            <a href="https://ru.jbl.com/JBL+PULSE+4.html?utm_source=medialeaks&utm_medium=sp&utm_campaign=pulse4" className="bay" target="_blank" rel="noopener noreferrer">Купить</a>
+            <div className="more" onClick={()=>reload()}>Еще разок</div>
         </div>
     )
 }

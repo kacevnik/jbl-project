@@ -43,7 +43,12 @@
     display: block;
 }
 
-.dnd svg {
+.dnd .ddcontainerghost svg {
+    filter: drop-shadow(0 0 10px #34FFF3);
+    overflow: visible;
+}
+
+.dnd.shake.shake-rotate svg {
     filter: drop-shadow(0 0 10px #34FFF3);
     overflow: visible;
 }
@@ -151,7 +156,7 @@
 }
 
 .room1-counter {
-    top: 7.2%;
+    top: 7.7%;
     position: absolute;
     left: 3.5%;
     font-size: 1.1em;

@@ -107,11 +107,11 @@ function GollArea2() {
     )
 }
 
-function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMainMsg, soundApp,soundAppAnime }) {
+function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomMainMsg, soundApp,soundAppAnime, hintRotateElem }) {
 
-    let btn = <DragELem7 name="btn-on-off" />
-    let light = <BtnLight name="btn-off-ligth" />
-    let column = <Column name="column-level-1" />
+    let btn = <DragELem7 name="btn-on-off" hintRotateElem={hintRotateElem}/>
+    let light = <BtnLight name="btn-off-ligth" hintRotateElem={hintRotateElem}/>
+    let column = <Column name="column-level-1" hintRotateElem={hintRotateElem}/>
     let cls = ['level-one-jbl']
 
     if (!displayBtnTVOff) {
@@ -140,12 +140,12 @@ function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomM
             <RoomMainMsg show={showRoomMainMsg} room={'room-1-msg'} />
             {room1Finish ? ('') : (<GollArea />)}
             {room1Finish ? ('') : (<GollArea2 />)}
-            {room1Finish ? ('') : (<DragELem name="ball-1" />)}
+            {room1Finish ? ('') : (<DragELem name="ball-1" hintRotateElem={hintRotateElem} />)}
             {room1Finish ? ('') : (<DragELem2 name="ball-2" />)}
             {room1Finish ? ('') : (<DragELem3 name="ball-3" />)}
             {room1Finish ? ('') : (<DragELem4 name="ball-4" />)}
             {room1Finish ? ('') : (<DragELem5 name="ball-5" />)}
-            {room1Finish ? ('') : (<DragELem6 name="vaza" />)}
+            {room1Finish ? ('') : (<DragELem6 name="vaza" hintRotateElem={hintRotateElem}/>)}
             {btn}
             {light}
             {column}

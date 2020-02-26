@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const Paper = () => {
+const Paper = ({hintRotateElem}) => {
+
+    const { setHintRotateElem } = useContext(Context);
 
     const nameElem = 'paper';
+    let cls = []
+  
+    if(hintRotateElem === nameElem){
+      cls.push('dnd shake shake-rotate')
+    }
 
     useEffect(() => {
         document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -18,6 +26,7 @@ const Paper = () => {
     }
 
     const landedOn = (e) => {
+        setHintRotateElem(false)
         document.getElementById(e.name).classList.add('dnd')
         let areaLeft = document.querySelector('.level-three-jbl').getBoundingClientRect().left;
         let elemLeft = parseInt(document.querySelector('#' + e.name + ' .ddcontainerghost').style.left)
@@ -47,11 +56,12 @@ const Paper = () => {
     }
 
     const landedEnd = (e) => {
+        setHintRotateElem(false)
         document.getElementById(e.name).classList.remove('dnd')
     }
 
     return (
-        <span style={styles} id={nameElem}>
+        <span style={styles} id={nameElem} className={cls.join(' ')}>
             <DragDropContainer
                 targetKey="paper"
                 dragData={{ name: nameElem }}

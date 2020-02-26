@@ -59,11 +59,12 @@
 }
 
 .goal-area-3 {
-    height: 45%;
-    width: 6%;
+    height: 51%;
+    width: 12%;
     top: 37%;
-    left: 27%;
+    left: 23%;
     position: absolute;
+    z-index: 1;
 }
 
 .goal-area-4 {

@@ -178,7 +178,7 @@ function GollArea6() {
     )
 }
 
-function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, soundAppAnime }) {
+function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, soundAppAnime, hintRotateElem }) {
 
     let cls = ['level-two-jbl']
 
@@ -200,11 +200,11 @@ function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgC
             <RoomPanel2 roomCount={roomCount2} />
             <div className="room2-counter">{roomCount2}/4</div>
             <RoomMainMsg show={showRoomMainMsg} room={'room-2-msg'} />
-            <MopElem name="mop" />
-            <Glass1Elem name="glass-1" />
-            <Glass2Elem name="glass-2" />
-            <ColumnElem />
-            <Cheptos name="cheptos" />
+            <MopElem name="mop" hintRotateElem={hintRotateElem}/>
+            <Glass1Elem name="glass-1" hintRotateElem={hintRotateElem}/>
+            <Glass2Elem name="glass-2" hintRotateElem={hintRotateElem}/>
+            <ColumnElem hintRotateElem={hintRotateElem}/>
+            <Cheptos name="cheptos" hintRotateElem={hintRotateElem}/>
             {hidePuddle ? ('') : (<PuddleElem />)}
             <BtnShowRules />
             <BtnShowHint />

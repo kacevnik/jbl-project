@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const MopElem = () => {
+const MopElem = ({hintRotateElem}) => {
+
+  const { setHintRotateElem } = useContext(Context);
 
   const nameElem = 'mop';
+  let cls = []
+
+  if(hintRotateElem === nameElem){
+    cls.push('dnd shake shake-rotate')
+  }
 
   useEffect(() => {
     document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -18,6 +26,7 @@ const MopElem = () => {
   }
 
   const landedOn = (e) => {
+    setHintRotateElem(false)
     document.getElementById(e.name).classList.add('dnd')
     let areaLeft = document.querySelector('.level-two-jbl').getBoundingClientRect().left;
     let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
@@ -47,7 +56,7 @@ const MopElem = () => {
   }
 
   const landedEnd = (e) => {
-    document.getElementById(e.name).classList.remove('dnd')
+    setHintRotateElem(false)
   }
 
   return (
@@ -60,7 +69,7 @@ const MopElem = () => {
         dragElemOpacity={1}
       >
         
-        <div style={styles}>
+        <div style={styles} className={cls.join(' ')}>
         <svg viewBox="0 0 149 453" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g mask="url(#mask0)">
             <path d="M45.797 369.538C50.2896 385.209 55.2085 395.309 61.3983 402.963C67.5891 410.618 75.0785 415.862 84.7867 421.784C86.1616 422.622 87.9147 422.536 89.2075 421.571C91.5643 419.812 91.2647 416.151 88.6677 414.683C78.7455 409.077 71.5778 403.31 66.1177 395.922C60.6597 388.538 56.9327 379.568 53.8394 367.597C53.0904 364.698 49.6496 363.428 47.2772 365.199C45.9314 366.204 45.3363 367.931 45.797 369.538Z" fill="#FFF480" stroke="black"/>

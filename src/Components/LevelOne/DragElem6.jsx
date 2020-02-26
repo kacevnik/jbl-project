@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const DragElem6 = () => {
+const DragElem6 = ({hintRotateElem}) => {
+
+  const { setHintRotateElem } = useContext(Context);
 
   const nameElem = 'vaza';
+  let cls = []
+
+  if(hintRotateElem === nameElem){
+    cls.push('dnd shake shake-rotate')
+  }
 
   useEffect(() => {
     document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -19,6 +27,8 @@ const DragElem6 = () => {
   }
 
   const landedOn = (e) => {
+
+    setHintRotateElem(false)
     document.getElementById(e.name).classList.add('dnd')
     let areaLeft = document.querySelector('.level-one-jbl').getBoundingClientRect().left;
     let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
@@ -48,7 +58,7 @@ const DragElem6 = () => {
   }
 
   const landedEnd = (e) => {
-    document.getElementById(e.name).classList.remove('dnd')
+    setHintRotateElem(false)
   }
 
   return (
@@ -61,7 +71,7 @@ const DragElem6 = () => {
         dragElemOpacity={1}
       >
         
-    <div style={styles}>
+    <div style={styles} className={cls.join(' ')}>
     <svg viewBox="0 0 68 155" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M41.4964 36.968L55.4372 8.94981C55.877 6.60382 54.3375 4.34473 52.3581 4.34473H15.3366C13.2839 4.34473 11.7444 6.51693 12.2576 8.94981L26.1983 36.968C19.6737 44.1798 0.894531 38.6609 0.894531 50.0433C0.894531 69.3326 14.8563 140.626 30.1048 152.617C32.0842 154.181 33.884 154.094 33.884 154.094C33.884 154.094 35.6106 154.181 37.59 152.617C52.8384 140.713 66.8002 69.4194 66.8002 50.0433C66.8002 38.574 47.9477 44.1798 41.4964 36.968Z" fill="#FF4713" stroke="black" strokeMiterlimit="10" />
         <path d="M22.4478 141.929L24.738 140.191L27.0282 141.929L29.3771 140.191L31.6673 141.929L33.9575 140.191L36.2477 141.929L38.5379 140.191L40.8868 141.929L43.177 140.191L45.4672 141.929" stroke="black" strokeMiterlimit="10" />

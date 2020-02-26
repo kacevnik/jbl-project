@@ -29,6 +29,7 @@ function App() {
   const [room3Finish, setRomm3Finish] = useState(false)
   const [showMainMsg, setShowMainMsg] = useState(false)
   const [showRoomMainMsg, setShowRoomMainMsg] = useState(false)
+  const [showRoomMainMsgSt, setShowRoomMainMsgSt] = useState(true)
   const [messages, setMessages] = useState(false)
   const [glasses, setGlasses] = useState(1)
   const [roomHints, setRoomHints] = useState([
@@ -53,6 +54,7 @@ function App() {
   const [soundApp, setSoundApp] = useState(false)
   const [soundAppAnime, setSoundAppAnime] = useState(true)
   const [hideWater, setHideWater] = useState(false)
+  const [hintRotateElem, setHintRotateElem] = useState(false)
 
   const chengeRoom1Count = (name) => {
     let c = room1Count + 1
@@ -147,6 +149,8 @@ function App() {
     setLevel(level.filter((ex, i) => i > 0));
     if (level[1] === 'level-1') {
       setShowMainMsg(true)
+    } else {
+      setShowRoomMainMsg('show')
     }
   }
 
@@ -192,7 +196,10 @@ function App() {
   const onHideMainMsg = (e) => {
     e.preventDefault()
     setShowMainMsg(false)
-    setShowRoomMainMsg('show')
+    if(level[0] === 'level-1' && showRoomMainMsgSt){
+      setShowRoomMainMsgSt(false)
+      setShowRoomMainMsg('show')
+    }
   }
 
   const onBtnShowRules = () => {
@@ -207,16 +214,13 @@ function App() {
 
   const ononBtnShowRules = () => {
     if (roomHints.length > 0) {
-      const elem = document.getElementById(roomHints[0].id)
-      if (elem) {
-        elem.classList.add('dnd')
-      }
+      setHintRotateElem(roomHints[0].id)
     }
   }
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler
+      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler, setHintRotateElem
     }}>
       <div className="App" style={appStyle}>
         <CanvasJbl
@@ -240,6 +244,7 @@ function App() {
           countAllAns={countAllAns}
           turnScreen={turnScreen}
           soundAppAnime={soundAppAnime}
+          hintRotateElem={hintRotateElem}
         />
       </div>
     </Context.Provider>

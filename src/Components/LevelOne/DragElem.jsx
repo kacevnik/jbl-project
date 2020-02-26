@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Context } from '../../context';
 
-const DragElem1 = () => {
+const DragElem1 = ({hintRotateElem}) => {
+
+  const { setHintRotateElem } = useContext(Context);
 
   const nameElem = 'ball-1';
+  let cls = []
+
+  if(hintRotateElem === nameElem){
+    cls.push('dnd shake shake-rotate')
+  }
 
   useEffect(() => {
     document.querySelector('#' + nameElem + ' .ddcontainer').style.cursor = 'default'
@@ -18,6 +26,7 @@ const DragElem1 = () => {
   }
 
   const landedOn = (e) => {
+    setHintRotateElem(false)
     document.getElementById(e.name).classList.add('dnd')
     let areaLeft = document.querySelector('.level-one-jbl').getBoundingClientRect().left;
     let elemLeft = parseInt(document.querySelector('#' +e.name+ ' .ddcontainerghost').style.left)
@@ -47,7 +56,7 @@ const DragElem1 = () => {
   }
 
   const landedEnd = (e) => {
-    document.getElementById(e.name).classList.remove('dnd')
+    setHintRotateElem(false)
   }
 
   return (
@@ -60,7 +69,7 @@ const DragElem1 = () => {
         dragElemOpacity={1}
       >
         
-    <div style={styles}>
+    <div style={styles} className={cls.join(' ')}>
       <svg viewBox="0 0 121 107" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M21.8025 84.6404L19.5068 81.0585L11.4176 84.365L12.2473 85.7511L12.7531 86.3791L14.3495 88.7566L15.5547 90.5891L21.8025 84.6404Z" fill="#4A4AD1" stroke="black" strokeMiterlimit="10"/>
         <path d="M107.275 26.1761C94.0656 5.70615 65.4579 0.525206 43.2849 14.6615C21.1118 28.7979 3.4391 63.4685 16.565 84.0528C29.6909 104.637 68.7819 103.098 90.856 88.9777C113.128 74.8257 120.385 46.6617 107.275 26.1761Z" fill="#4A4AD1" stroke="black" strokeMiterlimit="10"/>

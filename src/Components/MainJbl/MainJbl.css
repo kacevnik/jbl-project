@@ -24,6 +24,28 @@
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    .turnscreen .main-jbl {
+        height: 100%;
+    }
+    .turnscreen .main-jbl-first {
+        background: url(img/bg-mobile.svg)no-repeat center -8.5em;
+        height: 100%;
+    }
+    
+    .turnscreen .main-jbl-second {
+        background: url(img/bg-mobile.svg)no-repeat center -8.5em;
+        height: 100%;
+    }
+
+    .turnscreen #main-jbl-btn {
+        width: 28.291666em;
+        height: 5.8em;
+        top: 89.2%;
+        left: 25.8%;
+    }
+}
+
 #main-jbl-btn {
     position: absolute;
     width: 11.291666em;

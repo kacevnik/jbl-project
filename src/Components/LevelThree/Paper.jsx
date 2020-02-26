@@ -10,7 +10,7 @@ const Paper = () => {
     })
 
     const styles = {
-        top: '20.5%',
+        top: '20.2%',
         left: '83.7%',
         width: '1.58333333em',
         height: '1.70833333em',

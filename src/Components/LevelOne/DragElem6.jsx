@@ -10,11 +10,12 @@ const DragElem6 = () => {
   })
 
   const styles = {
-    top: '60.5%',
-    left: '86.6%',
+    top: '59.5%',
+    left: '85.6%',
     width: '2.833em',
     height: '6.458em',
     position: 'absolute',
+    zIndex: 999,
   }
 
   const landedOn = (e) => {

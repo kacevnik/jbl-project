@@ -10,7 +10,7 @@ const DragElem1 = () => {
   })
 
   const styles = {
-    top: '78%',
+    top: '77%',
     left: '2%',
     width: '5.04166667em',
     height: '4.45833333em',

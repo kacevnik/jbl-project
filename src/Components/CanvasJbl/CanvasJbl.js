@@ -13,7 +13,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
 
     const { onHideMainMsg } = useContext(Context);
 
-    let sep = level === 'final' ? 1.06299212598 : 1.62454874
+    let sep = level === 'final' ? 1.06299212598 : 1.58823529412
 
     const containerStyle = {
         width: globalWidth,

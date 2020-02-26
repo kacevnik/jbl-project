@@ -16,6 +16,18 @@ body {
     color: #000000;
 }
 
+@media screen and (max-width: 767px){
+    footer {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 860px) {
+    .menu-item-has-children .sub-menu {
+        height: 95px;
+    }
+}
+
 .jbl-container {
     width: 1350px;
     margin: 0 auto;

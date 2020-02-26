@@ -3,8 +3,8 @@ import React from 'react'
 const ColumnOn = () => {
 
   const styles = {
-    top: '45.6%',
-    left: '3.9%',
+    top: '45.3%',
+    left: '3.8%',
     width: '2.5833em',
     height: '5.75em',
     position: 'absolute',

@@ -36,6 +36,7 @@
     height: 19%;
     left: 66%;
     top: 2.7%;
+    z-index: 1000;
 }
 
 .canvas-jbl.level-1 .level-one-jbl, .canvas-jbl.level-1 .level-one-jbl.room-finish, .canvas-jbl.level-1 .level-one-jbl.tv-off{
@@ -141,7 +142,7 @@
 
 #vaza-clone {
     display: none;
-    top: 3%;
+    top: 2.4%;
     left: 67.2%;
     z-index: 998;
     width: 2.833em;

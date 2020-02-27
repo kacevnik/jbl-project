@@ -91,6 +91,13 @@
     left: 69%;
 }
 
+#mop-child {
+    background-image: url(img/mop.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
 #mop-clone {
     top: 28.9%;
     left: 0;

@@ -1,16 +1,33 @@
 
-.level-1 .btn-arrow.arrow-appear.arrow-appear-active {
-    opacity: 0;
-    transform: opacity 1s ease;
-}
-
-.level-1 .btn-arrow {
-    background-image: url(img/bg-1.svg);
+.btn-arrow {
     position: absolute;
     bottom: 3%;
     right: 1%;
     width: 11.6666666667em;
     height: 6.875em;
     cursor: pointer;
+    opacity: 0;
+    transition: opacity 1500ms ease;
+    display: none;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.btn-arrow.anime {
+    display: block;
+    opacity: 1;
+}
+
+.level-1 .btn-arrow {
+    background-image: url(img/bg-1.svg);
+}
+
+.level-2 .btn-arrow {
+    background-image: url(img/bg-2.svg);
+}
+
+.level-3 .btn-arrow {
+    background-image: url(img/bg-3.svg);
 }
 

@@ -1,23 +1,20 @@
-import React,{useContext} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import './BtnArrow.css'
 import {Context} from '../../context';
-import {CSSTransitionGroup} from 'react-transition-group'
 
 const BtnArrow = () => {
+    const [cls, setCls] = useState(['btn-arrow'])
     const {changeLevel} = useContext(Context);
+    useEffect(()=>{
+        if(cls.length === 1){
+            setInterval(()=>{
+                setCls([...cls, 'anime'])
+            }, 5000)
+        }
+    })
 
     return(
-        <CSSTransitionGroup
-        transitionName="arrow"
-        transitionAppear={true}
-        transitionAppearTimeout={5000}
-        transitionEnter={true}
-        transitionLeave={true}
-        transitionEnterTimeout={10000}
-        transitionLeaveTimeout={10000}
-        >
-            <div className="btn-arrow" key="arrow" onClick={() => changeLevel()}></div>
-        </CSSTransitionGroup>
+        <div className={cls.join(' ')} onClick={() => changeLevel()}></div>
     )
 }
 

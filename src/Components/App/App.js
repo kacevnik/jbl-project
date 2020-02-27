@@ -3,6 +3,15 @@ import { Context } from '../../context';
 import '../../fonts/Gordita-Regular.ttf';
 import './App.css';
 import CanvasJbl from '../CanvasJbl';
+import sound from './img/disco.wav'
+import soundEvent from './img/event.wav'
+
+const Sound = ({url, stateSound}) => {
+
+  return (
+    <audio src={url} loop type="audio/wav" autoPlay muted={!stateSound}></audio>
+  )
+}
 
 function App() {
 
@@ -64,6 +73,9 @@ function App() {
     setMessages(false)
     setMessages(name)
     setRoomHints(roomHints.filter(el => el.name !== name))
+    if(soundApp){
+      new Audio(soundEvent).play()
+    }
   }
 
   const chengeRoom2Count = (name) => {
@@ -74,6 +86,9 @@ function App() {
     setMessages(false)
     setMessages(name)
     setRoomHints(roomHints.filter(el => el.name !== name))
+    if(soundApp){
+      new Audio(soundEvent).play()
+    }
   }
 
   const chengeRoom3Count = (name) => {
@@ -84,6 +99,9 @@ function App() {
     setMessages(false)
     setMessages(name)
     setRoomHints(roomHints.filter(el => el.name !== name))
+    if(soundApp){
+      new Audio(soundEvent).play()
+    }
   }
 
   const onKeyElemHendler = (name) => {
@@ -220,9 +238,10 @@ function App() {
 
   return (
     <Context.Provider value={{
-      changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler, setHintRotateElem
+      setGlobalWidth, changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler, setHintRotateElem
     }}>
       <div className="App" style={appStyle}>
+        <Sound url={sound} stateSound={soundApp}/>
         <CanvasJbl
           globalWidth={globalWidth}
           level={level[0]}

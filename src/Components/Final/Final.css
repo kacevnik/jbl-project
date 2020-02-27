@@ -24,6 +24,14 @@
     height: 100%;
 }
 
+.turnscreen .level-final .final-jbl-second {
+    background-image: url(img/bg-1-mobile.svg);
+}
+
+.turnscreen .level-final .final-jbl-second {
+    background-image: url(img/bg-1-mobile.svg);
+}
+
 .level-final.bg-2 .final-jbl-first{
     background-image: url(img/bg-2.svg);
     background-repeat: no-repeat;
@@ -42,6 +50,14 @@
     height: 100%;
 }
 
+.turnscreen .level-final.bg-2 .final-jbl-second {
+    background-image: url(img/bg-2-mobile.svg);
+}
+
+.turnscreen .level-final.bg-2 .final-jbl-second {
+    background-image: url(img/bg-2-mobile.svg);
+}
+
 .level-final.bg-3 .final-jbl-first{
     background-image: url(img/bg-3.svg);
     background-repeat: no-repeat;
@@ -58,6 +74,14 @@
     background-size: contain;
     width: 100%;
     height: 100%;
+}
+
+.turnscreen .level-final.bg-3 .final-jbl-second {
+    background-image: url(img/bg-2-mobile.svg);
+}
+
+.turnscreen .level-final.bg-3 .final-jbl-second {
+    background-image: url(img/bg-3-mobile.svg);
 }
 
 .final .level-final {
@@ -88,6 +112,13 @@
     left: 18.5%;
 }
 
+.turnscreen .final-counter, .turnscreen .bg-2 .final-counter, .turnscreen .bg-3 .final-counter {
+    top: 7.5%;
+    left: 8%;
+    width: 10%;
+    font-size: 2.5em;
+} 
+
 .social-btns {
     position: absolute;
     width: 15%;
@@ -97,6 +128,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.turnscreen .social-btns {
+    width: 36%;
+    top: 45%;
+    left: 31%;
 }
 
 .bg-2 .social-btns, .bg-3 .social-btns {
@@ -110,6 +147,10 @@
     cursor: pointer;
 }
 
+.turnScreen .social-btns > div {
+    width: 6.083333em;
+    height: 5.875em;
+}
 
 .social-btns > div:hover {
     opacity: .7;
@@ -149,6 +190,13 @@
     color: transparent;
 }
 
+.turnscreen .bay {
+    width: 26em;
+    height: 7em;
+    top: 92%;
+    left: 4%;
+}
+
 .more {
     position: absolute;
     width: 11.5833333333em;
@@ -163,8 +211,19 @@
     cursor: pointer;
 }
 
+.turnscreen .more {
+    width: 23.583333em;
+    height: 7em;
+    top: 92%;
+    left: 51%;
+}
+
 .bg-2 .bay, .bg-3 .bay, .bg-2 .more, .bg-3 .more {
     top: 85%;
+}
+
+.turnscreen .bg-2 .bay, .turnscreen .bg-3 .bay, .turnscreen .bg-2 .more, .turnscreen .bg-3 .more {
+    top: 92%;
 }
 
 .bay:hover, .more:hover {

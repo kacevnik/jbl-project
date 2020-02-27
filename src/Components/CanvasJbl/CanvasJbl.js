@@ -11,15 +11,23 @@ import RoomMessages from '../RoomMessages'
 
 function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns, turnScreen, soundAppAnime, hintRotateElem }) {
 
-    const { onHideMainMsg } = useContext(Context);
+    const { onHideMainMsg, setGlobalWidth } = useContext(Context);
+
+    const screens = {
+        w667: 595
+    }
 
     let w = globalWidth
 
     let sep = level === 'final' ? 1.03053435115 : 1.58823529412
-    if (level === 'start' && globalWidth <= 768 && turnScreen) {
+    if ((level === 'start' || level === 'final') && globalWidth <= 768 && turnScreen) {
         sep = 0.45714285714
         w = w + 56.25 * 2
     }
+
+    // if (screens.hasOwnProperty('w' + window.innerWidth)){
+    //     setGlobalWidth(screens['w' + window.innerWidth])
+    // }
 
     const containerStyle = {
         width: w,
@@ -90,7 +98,7 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
                     <div id="main-message-btn" onClick={(e) => onHideMainMsg(e)}></div>
                 </span>
             </div>
-            {turnScreen && level !== 'start'  ? (<TurnScreen />) : ('')}
+            {turnScreen && level !== 'start' && level !== 'final'  ? (<TurnScreen />) : ('')}
         </div>
     )
 }

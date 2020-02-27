@@ -16,6 +16,21 @@ const Sound = ({url, stateSound}) => {
 function App() {
 
   const getGLobalWidth = () => {
+
+    const screens = {
+      w667: 595,
+      w640: 572,
+      w731: 653,
+      w823: 653,
+      w568: 507,
+      w736: 658,
+      w812: 596,
+    }
+
+    if (screens.hasOwnProperty('w' + window.innerWidth)){
+      return screens['w' + window.innerWidth]
+    }
+
     if (window.innerWidth / window.innerHeight > 1.62650602) {
       let w = (window.innerHeight - window.innerWidth / 56.25 * 2) * 1.62650602;
       return w < 1350 ? w : 1350;

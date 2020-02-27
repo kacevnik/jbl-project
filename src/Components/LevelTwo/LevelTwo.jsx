@@ -199,7 +199,7 @@ function LevelTwo({ roomCount, roomCount2, showRoomMainMsg, hidePuddle, room2BgC
             <RoomPanel roomCount={roomCount} />
             <RoomPanel2 roomCount={roomCount2} />
             <div className="room2-counter">{roomCount2}/4</div>
-            <RoomMainMsg show={showRoomMainMsg} room={'room-2-msg'} />
+            {showRoomMainMsg ? (<RoomMainMsg room={'room-2-msg'} />) : ('')}
             <MopElem name="mop" hintRotateElem={hintRotateElem}/>
             <Glass1Elem name="glass-1" hintRotateElem={hintRotateElem}/>
             <Glass2Elem name="glass-2" hintRotateElem={hintRotateElem}/>

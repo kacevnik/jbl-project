@@ -156,7 +156,7 @@ function LevelTree({ roomCount, roomCount2, roomCount3, showRoomMainMsg, soundAp
                 <RoomPanel3 roomCount={roomCount3} />
             </div>
             <div className="room3-counter">{roomCount3}/3</div>
-            <RoomMainMsg show={showRoomMainMsg} room={'room-3-msg'} />
+            {showRoomMainMsg ? (<RoomMainMsg room={'room-3-msg'} />) : ('')}
             {hideWater ? ('') : (<Water />)}
             <BtnShowRules />
             <BtnShowHint />

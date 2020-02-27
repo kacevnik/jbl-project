@@ -5,7 +5,12 @@
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: top right;
+    display: block;
     opacity: 0;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-name: s-hide;
 }
 
 .room-main-msg.room-1-msg {
@@ -26,13 +31,8 @@
     background-image: url(img/room-3-main-msg.svg);
 }
 
-.room-main-msg.show{
-    animation-duration: 5s;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    animation-name: s-hide;
-    opacity: 0;
-    z-index: 1;
+.room-main-msg.hide {
+    display: none;
 }
 
 @keyframes s-hide{

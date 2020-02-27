@@ -137,7 +137,7 @@ function LevelOne({ roomCount, displayBtnTVOff, columnOn, room1Finish, showRoomM
         <div className={cls.join(' ')}>
             <RoomPanel roomCount={roomCount} />
             <div className="room1-counter">{roomCount}/5</div>
-            <RoomMainMsg show={showRoomMainMsg} room={'room-1-msg'} />
+            {showRoomMainMsg ? (<RoomMainMsg room={'room-1-msg'} />) : ('')}
             {room1Finish ? ('') : (<GollArea />)}
             {room1Finish ? ('') : (<GollArea2 />)}
             {room1Finish ? ('') : (<DragELem name="ball-1" hintRotateElem={hintRotateElem} />)}

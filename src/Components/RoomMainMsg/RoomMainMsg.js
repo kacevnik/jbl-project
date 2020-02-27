@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './RoomMainMsg.css'
 
-function RoomMainMsg({ room, show }) {
+function RoomMainMsg({ room }) {
 
-    let cls = ['room-main-msg']
-    cls.push(room)
-    if (show) {
-        cls.push('show')
-    }
+    const [cls, setCls] = useState(['room-main-msg ' + room ])
 
-
+    useEffect(()=>{
+        if(cls.length === 1){
+            setTimeout(()=>{
+                setCls([...cls, 'hide'])
+            }, 5000)
+        }
+    })
     return (
         <div className={cls.join(' ')}>
 

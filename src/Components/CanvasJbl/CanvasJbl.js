@@ -11,11 +11,7 @@ import RoomMessages from '../RoomMessages'
 
 function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, displayBtnTVOff, columnOn, room1Finish, showMainMsg, showRoomMainMsg, messages, hidePuddle, room2BgColumn, room2BgCheptos, soundApp, room3Finish, hideWater, countAllAns, turnScreen, soundAppAnime, hintRotateElem }) {
 
-    const { onHideMainMsg, setGlobalWidth } = useContext(Context);
-
-    const screens = {
-        w667: 595
-    }
+    const { onHideMainMsg } = useContext(Context);
 
     let w = globalWidth
 
@@ -24,10 +20,6 @@ function CanvasJbl({ globalWidth, level, roomcount1, roomcount2, roomcount3, dis
         sep = 0.45714285714
         w = w + 56.25 * 2
     }
-
-    // if (screens.hasOwnProperty('w' + window.innerWidth)){
-    //     setGlobalWidth(screens['w' + window.innerWidth])
-    // }
 
     const containerStyle = {
         width: w,

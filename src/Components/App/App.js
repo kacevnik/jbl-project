@@ -253,7 +253,7 @@ function App() {
 
   return (
     <Context.Provider value={{
-      setGlobalWidth, changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler, setHintRotateElem
+      setGlobalWidth, changeLevel, counterBalls, chengeRoom1Count, btnTVOff, btnLightOff, hendlerColumnOnn, onHideMainMsg, onBtnShowRules, chengeStateMessage, ononBtnShowRules, chengeRoom2BgColumn, onHidePuddle, chengeCoutnGlasses, chengeRoom2BgCheptos, onBtnSountd, chengeRoom3Count, onBtnWasher, onKeyElemHendler, setHintRotateElem, setShowRoomMainMsg
     }}>
       <div className="App" style={appStyle}>
         <Sound url={sound} stateSound={soundApp}/>

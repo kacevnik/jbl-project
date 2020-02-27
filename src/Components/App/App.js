@@ -185,6 +185,10 @@ function App() {
     } else {
       setShowRoomMainMsg('show')
     }
+
+    if(level[1] === 'final') {
+      setSoundApp(false)
+    }
   }
 
   const [countBall, setCountBall] = useState(1)

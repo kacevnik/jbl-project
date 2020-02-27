@@ -18,6 +18,7 @@ function MainJbl() {
                 <div className="main-jbl-second" data-depth="0.1"></div>
             </div>
             <div id="main-jbl-btn" onClick={() => changeLevel()}></div>
+            <a href="https://ru.jbl.com/JBL+PULSE+4.html?utm_source=medialeaks&utm_medium=sp&utm_campaign=pulse4" className="jbl-pulse-4" target="_blank" rel="noopener noreferrer">JBL Pulse 4</a>
         </div>
 
     )

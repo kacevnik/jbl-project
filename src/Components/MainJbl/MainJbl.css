@@ -68,3 +68,20 @@
 #main-jbl-btn:hover {
     opacity: .7;
 }
+
+.jbl-pulse-4 {
+    position: absolute;
+    width: 9%;
+    height: 4%;
+    top: 64%;
+    left: 44%;
+    color: transparent;
+    cursor: pointer;
+}
+
+.turnscreen .jbl-pulse-4 {
+    width: 83%;
+    height: 6%;
+    top: 68%;
+    left: 8%;
+}

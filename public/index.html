@@ -46,9 +46,13 @@
         href="https://medialeaks.ru/wp-content/themes/medialeaks_2k19/assets/build/bundle.css?ver=376" type="text/css"
         media="all">
     <script>
-        document.addEventListener('touchmove', function (event) {
-            if (event.scale !== 1) { event.preventDefault(); }
-        }, { passive: false });
+
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            document.addEventListener('touchmove', function (event) {
+                if (event.scale !== 1) { event.preventDefault(); }
+            }, { passive: false });
+        }
+
     </script>
 </head>
 

@@ -10,10 +10,10 @@ function Final({countAllAns}) {
     });
 
     let url = ''
-    const urlProgect = 'https://medialeaks.ru/jbl'
+    const urlProgect = 'https://medialeaks.ru/igra-smozhesh-li-tyi-ustroit-legendarnuyu-vecherinku/'
     const title = 'Jbl - Спаси свою вечеринку! Мой результат ' + countAllAns + ' из 12! Попробуй и ты!'
     const desc = 'Jbl - Спаси свою вечеринку! Мой результат ' + countAllAns + ' из 12! Попробуй и ты!'
-    const pimg = 'https://medialeaks.ru/jbl'
+    const pimg = 'https://medialeaks.ru/igra-smozhesh-li-tyi-ustroit-legendarnuyu-vecherinku/'
 
     const shareVk = () => {
         url  = 'http://vkontakte.ru/share.php?';
